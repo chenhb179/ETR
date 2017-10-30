@@ -1,0 +1,72 @@
+<style>
+    .app-panel {
+        width: 700px;
+        background-color: #ffffff;
+        margin: 40px 50px 40px 50px;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        text-align: center;
+        line-height: 40px;
+        background-color: #5864AE;
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+    .app-form {
+        width: 500px;
+        margin: auto;
+        padding: 30px 0px 30px 0px;
+    }
+
+    .app-form > div {
+        margin-top: 20px;
+    }
+
+    .app-form > div > div {
+        width: 150px;
+        display: inline-block;
+        text-align: right;
+        margin-right: 20px;
+    }
+
+    .app-form > div > input {
+        width: 250px;
+        height: 32px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+
+    .app-form > div > textarea {
+        width: 250px;
+        height: 200px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+</style>
+
+<div ng-controller="feedback" class="app-panel">
+    <div class="app-title">留言反馈</div>
+
+    <form class="app-form" name="form" class="form-horizontal" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <div>留言反馈标题</div>
+            <input ng-model="formdata.title" required/>
+        </div>
+        <div>
+            <div>请留下您的联系方式</div>
+            <input ng-model="formdata.contact" required/>
+        </div>
+        <div>
+            <div style="vertical-align: top;">留言内容</div>
+            <textarea ng-model="formdata.content" required></textarea>
+        </div>
+        <div>
+            <div>&nbsp;</div>
+            <button class="btn btn-success" type="submit" ng-disabled="form.$invalid">保存反馈</button>
+        </div>
+    </form>
+</div>

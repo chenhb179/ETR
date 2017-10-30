@@ -1,0 +1,26 @@
+<div ng-controller="feedback_list">
+    <table class="table table-hover" ng-click="onListItemClick($event)">
+        <thead>
+        <tr>
+            <th>反馈内容</th>
+            <th>反馈时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody ng-model="admin_username">
+        <tr ng-repeat="it in feedbackList">
+            <td>{{it.content}}</td>
+            <td>{{it.createTime}}</td>
+            <td ng-if="admin_username == 'admin'">
+                <button type="button" class="btn btn-default btn-xs" index="{{$index}}" style="display: {{it.display}}">标记已处理</button>
+                <button type="button" class="btn btn-default btn-xs" index="{{$index}}">删除</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="position: relative;">
+        <ul class="pagination" style="margin: 0px; position: absolute; right: 40px;top: 0px;"></ul>
+    </div>
+
+</div>

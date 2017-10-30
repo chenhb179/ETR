@@ -1,0 +1,16 @@
+{
+	"name": "xysq-app",
+	"version": "1.0.0",
+	"versionCode": 13,
+	"description": "信用社区移动HTML5版",
+	"main": "main.js",
+	"dependencies": {
+	},
+	"devDependencies": {
+		"webpack": "^1.13.0",
+		"glob": "^7.0.3"
+	},
+	"scripts": {
+	},
+	"author": "Sean"
+}

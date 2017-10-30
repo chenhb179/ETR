@@ -1,0 +1,40 @@
+<style>
+    .app-dialog {
+        text-align: center;
+    }
+
+    .app-dialog input {
+        width: 250px;
+        height: 44px;
+        border-radius: 5px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+
+    .app-dialog > div:nth-child(1) {
+        text-align: center;
+        line-height: 50px;
+        font-size: 18px;
+        height: 50px;
+        font-weight: bold;
+        width: 250px;
+        margin: auto;
+        color: #000000;
+    }
+</style>
+
+<div class="app-dialog">
+    <div>输入二次密码</div>
+    <div>
+        <input ng-model="passwd" type="password">
+        <div style="line-height: 80px;position: relative;height: 80px;width: 250px;margin: auto;">
+            <div class="col-xs-6" style="padding: 0px 4px 0px 0px;">
+                <button class="btn btn-default" ng-click="cancel()" style="width: 100%;">取消</button>
+            </div>
+            <div class="col-xs-6" style="padding: 0px 0px 0px 4px;">
+                <button class="btn btn-success" ng-click="ok()" style="width: 100%;">完成</button>
+            </div>
+        </div>
+    </div>
+</div>

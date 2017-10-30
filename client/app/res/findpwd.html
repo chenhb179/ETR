@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>找回密码</title>
+        <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style/style.css" rel="stylesheet">
+        <style>
+            body{
+                background-image: url("drawable/bg_find_password.jpg");
+                background-size: 100%;
+            }
+            form{
+                background-color: #ffffff;
+                border-radius: 10px;
+                box-shadow: 1px 1px 10px #cccccc;
+                border: solid 1px #cccccc;
+            }
+            input{
+                border: none;
+                width: 100%;
+                height: 40px;
+                border-bottom: solid 1px #dcdcdc;
+            }
+        </style>
+
+        <script src="libs/angular.min.js"></script>
+        <script src="libs/jquery-3.2.1.min.js"></script>
+        <script src="libs/jquery-md5.js"></script>
+        <script src="libs/juicer-min.js"></script>
+    </head>
+
+    <body ng-app="findpwdApp" ng-controller="findpwd">
+        <table style="width: 100%; height: 100%; position: absolute; left: 0px; right: 0px; top: 0px ;bottom: 0px;">
+            <tr>
+                <td style="padding: 0px 28px 0px 28px;">
+                    <form name="form" ng-submit="submitForm(form.$valid)" novalidate>
+                        <div style="text-align: center; font-size: 18px; color: #3A8FFF;line-height: 48px;">找回密码</div>
+                        <div style="background-color: #98C4FD; height: 1px;">&nbsp;</div>
+                        <div style="padding: 28px;">
+                            <input name="mobile" ng-model="formdata.mobile" placeholder="手机号码" ng-pattern="/^1[3578]{1}\d{9}\d?$/" required>
+                            <div style="margin-top: 14px;position: relative;">
+                                <input ng-model="formdata.code" placeholder="验证码" style="width: 120px;" ng-pattern="/^\d{6}$/" required>
+                                <button ng-click="sendcode(form.mobile.$valid)" ng-disabled="form.mobile.$invalid" class="btn btn-info" style="position: absolute; right: 0px;">发送验证码</button>
+                            </div>
+                            <input ng-model="formdata.passwd" placeholder="设置新密码" type="password" style="margin-top: 14px;" required>
+                        </div>
+                        <button ng-show="form.$invalid" style="background-color: #95BEF3; line-height: 48px; color: #ffffff; font-size: 16px;text-align: center;border-radius: 0px 0px 10px 10px;width: 100%;border: none;">完成</button>
+                        <button type="submit" ng-show="form.$valid" style="background-color: #3A8FFF; line-height: 48px; color: #ffffff; font-size: 16px;text-align: center;border-radius: 0px 0px 10px 10px;width: 100%;border: none;">完成</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
+
+<script src="libs/__code__.js"></script>

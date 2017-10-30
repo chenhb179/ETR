@@ -1,0 +1,36 @@
+<style>
+    .app-form input {
+        width: 200px;
+        height: 24px;
+    }
+
+    .app-form label {
+        width: 100px;
+    }
+</style>
+
+<div ng-controller="setting">
+    <form name="form" class="app-form" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <div>网站维护</div>
+            <div style="margin-top: 14px;">
+                <div>
+                    <label>是否维护: </label>
+                    <input type="checkbox" ng-model="setting.WangZhanWeiHu.ShiFouWeiHu" style="width: 14px;height: 14px;">
+                </div>
+                <div>
+                    <label>维护时间: </label>
+                    <input ng-model="setting.WangZhanWeiHu.GuanBiShiJian" required>
+                </div>
+                <div>
+                    <label style="vertical-align: top">维护提示: </label>
+                    <textarea ng-model="setting.WangZhanWeiHu.GuanBiTiShi" required></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div ng-model="admin_username" ng-if="admin_username == 'admin'">
+            <button class="btn btn-default" ng-disabled="form.$invalid" type="submit">保存设置</button>
+        </div>
+    </form>
+</div>

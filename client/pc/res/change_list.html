@@ -1,0 +1,50 @@
+<style>
+    th {
+        background-color: #5864AE;
+        color: #ffffff;
+    }
+
+    .app-body {
+        margin: 20px 30px 20px 30px;
+        width: 980px;
+    }
+
+    .app-panel {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        line-height: 40px;
+        font-size: 18px;
+    }
+</style>
+
+<div ng-controller="change_list" class="app-body">
+    <div class="app-title">信用分变更记录</div>
+    <div class="app-panel">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>说明</th>
+                <th>数量</th>
+                <th>类型</th>
+                <th>时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="it in listdata.changeList">
+                <td>{{it.changeId}}</td>
+                <td>{{it.descr}}</td>
+                <td>{{it.amount}}</td>
+                <td>{{it.type}}</td>
+                <td>{{it.createTime}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <ul class="pagination" style="margin: 0px 0px 14px 14px;"></ul>
+        </div>
+    </div>
+</div>

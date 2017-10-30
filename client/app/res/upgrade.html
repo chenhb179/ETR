@@ -1,0 +1,44 @@
+<style>
+    .app-upgrade {
+        background-color: #007BC1;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        overflow-y: auto;
+    }
+
+    .app-upgrade-card {
+        background-image: url('drawable/bg_upgrade_item.png');
+        background-size: 100% 100%;
+        height: 100px;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+</style>
+
+<div ng-controller="upgrade" class="app-upgrade">
+
+    <img ng-click="back()" src="drawable/btn_com_back.png" style="width: 50px; padding: 14px; position: absolute; left: 0px;">
+
+    <div style="width: 140px; margin: auto;">
+        <img src="drawable/img_upgrade_title-min.png" style="width: 100%;">
+    </div>
+
+    <div style="padding: 14px;position: fixed; left: 0px; right: 0px; top: 50px; bottom: 0px;overflow-y: auto">
+        <div class="app-upgrade-card" ng-repeat="it in cards">
+            <div class="col-xs-4" style="text-align: center;padding-top: 5px;">
+                <img ng-src="{{it.icon}}" style="width: 90px;">
+            </div>
+            <div class="col-xs-8" style="line-height: 50px;color: #ffffff;">
+                <div style="font-size: 18px;">{{it.name}}</div>
+                <div style="position: relative">
+                    <span>信用分:{{it.points}}</span>
+                    <img ng-show="user.level!==($index+1)" index="{{$index}}" ng-click="upgradeCard($event)" src="drawable/btn_upgrade_config.png" style="width: 80px;position: absolute; right: 0px;top: 8px;">
+                    <img ng-show="user.level===($index+1)" ng-click="reActive()" index="{{$index}}" ng-click="upgradeCard($event)" src="drawable/btn_reactive.png" style="width: 80px;position: absolute; right: 0px;top: 8px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

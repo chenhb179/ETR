@@ -1,0 +1,121 @@
+<style>
+
+    .app-body {
+        background-color: #f1f1f1;
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        top: 50px;
+        bottom: 0px;
+        overflow-y: auto;
+    }
+
+    form {
+        padding: 14px 0px 0px 0px;
+    }
+
+    form > div {
+        border-bottom: 1px solid #e1e1e1;
+        line-height: 40px;
+        height: 44px;
+        background-color: #ffffff;
+        padding: 0px 0px 0px 14px;
+    }
+
+    form input {
+        border: none;
+        width: 100%;
+    }
+</style>
+
+<div ng-controller="updateinfo">
+
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>个人资料</div>
+    </div>
+
+    <div class="app-body">
+        <form name="form" novalidate>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">用户名</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <span>{{formdata.username}}</span>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">姓名</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <input id="focus1" placeholder="请填写姓名" ng-model="formdata.name" required/>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">身份证</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <input placeholder="请填写身份证" ng-model="formdata.idcard" required/>
+                </div>
+            </div>
+			<div>
+                <div class="col-xs-3" style="padding: 0px;">手机号</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <span>{{formdata.mobile}}</span>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">验证码</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <input placeholder="请填写验证码" ng-model="formdata.code" style="width:45%;" required/>
+					<button ng-click="sendcode(form.mobile.$valid)" ng-disabled="form.mobile.$invalid" class="btn btn-warning">发送验证码</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 14px;">
+                <div class="col-xs-3" style="padding: 0px;">银行卡</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <input placeholder="请填写银行卡" ng-model="formdata.bankcard" required/>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">开户行</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <input placeholder="请填写开户行" ng-model="formdata.bankAddress" required/>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">所在城市</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <input placeholder="请填写所在城市" ng-model="formdata.city" required/>
+                </div>
+            </div>
+
+            <div style="margin-top: 14px;">
+                <div class="col-xs-3" style="padding: 0px;">微信</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <input placeholder="请填写微信" ng-model="formdata.wechat"/>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">支付宝</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <input placeholder="请填写支付宝" ng-model="formdata.alipay"/>
+                </div>
+            </div>
+
+            <!--<div style="margin-top: 14px;height: 100px;">-->
+                <!--<input ng-model="formdata.idcardUrl" style="display: none;" required>-->
+                <!--<input id="uploadFile" type="file" style="display: none;" accept=".png,.jpg">-->
+
+                <!--<div class="col-xs-3" style="padding: 0px;">证件照</div>-->
+                <!--<div class="col-xs-9" style="padding: 10px 0px 0px 0px;">-->
+                    <!--<img ng-click="upload()" src="drawable/btn_add_post_card.png" style="width: 50px;">-->
+                    <!--<div style="color: blue;">请上传手持身份证照片</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </form>
+
+        <div style="padding: 14px;">
+            <button ng-click="submitForm(form.$valid)" ng-disabled="form.$invalid" class="btn btn-primary btn-block">提交</button>
+        </div>
+    </div>
+
+</div>

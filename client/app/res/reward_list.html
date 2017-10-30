@@ -1,0 +1,73 @@
+<style>
+    .app-list-tab {
+        background-color: #ffffff;
+        line-height: 44px;
+        border-bottom: #dcdcdc;
+        position: fixed;
+        left: 0px;
+        top: 50px;
+        text-align: center;
+        right: 0px;
+        z-index: 100;
+        color: dodgerblue;
+    }
+
+    .app-list-tab-height {
+        border-bottom: 2px solid #3A8FFF;
+    }
+
+    .app-list {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background-color: #f0f0f0;
+        top: 94px;
+        overflow-y: auto;
+        padding-bottom: 8px;
+    }
+
+    .app-list > div {
+        padding: 8px 8px 0px 8px;
+    }
+
+    .app-list > div > div {
+        border-radius: 4px;
+        background-color: #ffffff;
+        border: 1px solid #eaeaea;
+        box-shadow: 1px 1px 5px #eaeaea;
+        position: relative;
+    }
+</style>
+
+<div ng-controller="reward_list">
+
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>我的奖励</div>
+    </div>
+
+    <div class="app-list-tab">
+        <div ng-click="tab($event)" ng-class="" class="col-xs-3 app-list-tab-height">分享奖励</div>
+        <div ng-click="tab($event)" class="col-xs-3">平衡奖励</div>
+        <div ng-click="tab($event)" class="col-xs-3">团队津贴</div>
+        <div ng-click="tab($event)" class="col-xs-3">管理津贴</div>
+    </div>
+
+    <div class="app-list">
+        <div ng-repeat="it in listdata.rewardList">
+            <div>
+                <div style="line-height: 48px; height: 48px;padding: 0px 14px 0px 14px;">
+                    <img src="drawable/icon_credit_score_changed.png" style="width: 20px;position: relative; bottom: 2px;">
+                    <span>获得{{it.type}}信用分</span>
+                </div>
+                <div style="background-color: #cccccc;height: 1px;">&nbsp;</div>
+                <div style="line-height: 34px; height: 34px;padding: 0px 14px 0px 14px; position: relative; color: gray;">
+                    <span>信用分: {{it.points}}</span>
+                    <span style="position: absolute;right: 14px;">{{it.createTime}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

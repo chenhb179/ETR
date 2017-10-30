@@ -1,0 +1,47 @@
+<style>
+    .app-panel {
+        width: 500px;
+        background-color: #ffffff;
+        margin: 40px 50px 40px 50px;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        text-align: center;
+        line-height: 40px;
+        background-color: #5864AE;
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+    .app-customer {
+        background-color: #ffffff;
+    }
+
+    .app-customer > div {
+        display: inline-block;
+        width: 248px;
+        text-align: center;
+        padding: 20px 0px 20px 0px;
+    }
+
+    .app-customer > div > img {
+        width: 150px;
+        height: 150px;
+        margin-top: 20px;
+    }
+</style>
+
+<div ng-controller="customer" class="app-panel">
+    <div class="app-title">联系客服</div>
+    <div class="app-customer">
+        <div>
+            <div>客服微信1</div>
+            <img src="drawable/qrcode.png"/>
+        </div>
+        <div>
+            <div>客服微信2</div>
+            <img src="drawable/qrcode.png"/>
+        </div>
+    </div>
+</div>

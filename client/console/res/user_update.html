@@ -1,0 +1,107 @@
+<style>
+    .app-form {
+        width: 400px;
+    }
+
+    .app-form > div {
+        margin-top: 20px;
+    }
+
+    .app-form > div > div:nth-child(1) {
+        width: 80px;
+        display: inline-block;
+        text-align: right;
+        margin-right: 20px;
+    }
+
+    .app-form > div > div:nth-child(3) {
+        width: 10px;
+        text-align: right;
+        display: inline-block;
+    }
+
+    .app-form > div > input {
+        width: 250px;
+        height: 32px;
+        padding: 0px 8px 0px 8px;
+    }
+</style>
+
+<div ng-controller="user_update">
+    <form class="app-form" name="form" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <div>用户名</div>
+            <input ng-model="formdata.username" disabled="true"/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>手机号码</div>
+            <input ng-model="formdata.mobile" placeholder="请输入手机号码" required/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>姓名</div>
+            <input id="focus1" ng-model="formdata.name" placeholder="请输入真实姓名" required/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>身份证</div>
+            <input ng-model="formdata.idcard" placeholder="请输入有效身份证" required/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>银行卡</div>
+            <input ng-model="formdata.bankcard" placeholder="请输入有效银行卡" required/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>要转入的信用分</div>
+            <input ng-model="formdata.points" placeholder="请输入此次要转入的信用分" required/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>所在城市</div>
+            <input ng-model="formdata.city" placeholder="请输入所在城市" required/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>开户行</div>
+            <input ng-model="formdata.bankAddress" placeholder="请输入开户行" required/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>微信</div>
+            <input ng-model="formdata.wechat" placeholder="请输入微信"/>
+            <div>&nbsp;</div>
+        </div>
+        <div>
+            <div>支付宝</div>
+            <input ng-model="formdata.alipay" placeholder="请输入支付宝"/>
+            <div>&nbsp;</div>
+        </div>
+        <div>
+            <div>密码</div>
+            <input type="password" ng-model="formdata.pwd1" placeholder="请输入登录密码"/>
+            <div>&nbsp;</div>
+        </div>
+        <div>
+            <div>二次密码</div>
+            <input type="password" ng-model="formdata.pwd2" placeholder="请输入二次密码"/>
+            <div>&nbsp;</div>
+        </div>
+        <!--<div>-->
+        <!--<div style="vertical-align: top; padding-top: 6px;">上传身份证</div>-->
+        <!--<div style="display: inline-block; width: 250px;">-->
+        <!--<input ng-model="formdata.idcardUrl" style="display: none;" required>-->
+        <!--<input id="uploadFile" type="file" style="display: none;" accept=".png,.jpg">-->
+        <!--<button ng-click="upload()" type="button" class="btn btn-primary" style="width: 250px;">请上传手持身份证照片</button>-->
+        <!--<div style="color: red; padding-top: 4px;">图片大小不能超过3M, 仅限png,jpg格式</div>-->
+        <!--</div>-->
+        <!--<div style="vertical-align: top; padding-top: 6px;">*</div>-->
+        <!--</div>-->
+        <div>
+            <div>&nbsp;</div>
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-success">保存修改</button>
+        </div>
+    </form>
+</div>

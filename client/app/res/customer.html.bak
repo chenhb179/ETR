@@ -1,0 +1,29 @@
+<style>
+    .app-list {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        top: 50px;
+        padding: 14px;
+        overflow-y: auto;
+    }
+</style>
+
+<div ng-controller="customer">
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>专业客服</div>
+    </div>
+
+    <div class="app-list">
+        <div style="width: 60%; margin: auto; border: solid 1px #dddddd;">
+            <img src="drawable/qrcode.png" style="width: 100%;">
+            <div style="background-color: #dddddd; line-height: 40px; text-align: center;">客服微信1</div>
+        </div>
+        <div style="width: 60%; margin: auto; border: solid 1px #dddddd;margin-top: 28px;">
+            <img src="drawable/qrcode.png" style="width: 100%;">
+            <div style="background-color: #dddddd; line-height: 40px; text-align: center;">客服微信2</div>
+        </div>
+    </div>
+</div>

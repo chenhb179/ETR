@@ -1,0 +1,76 @@
+<style>
+    .app-panel {
+        width: 700px;
+        background-color: #ffffff;
+        margin: 40px 50px 40px 50px;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        line-height: 54px;
+        padding-left: 14px;
+    }
+
+    .app-title > img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .app-form {
+        width: 600px;
+        margin: auto;
+        padding: 0px 0px 30px 0px;
+    }
+
+    .app-form > div {
+        margin-top: 20px;
+    }
+
+    .app-form > div > div:nth-child(1) {
+        width: 150px;
+        display: inline-block;
+        text-align: right;
+        margin-right: 20px;
+    }
+
+    .app-form > div > div:nth-child(3) {
+        width: 170px;
+        text-align: left;
+        padding-left: 14px;
+        display: inline-block;
+    }
+
+    .app-form > div > input {
+        width: 250px;
+        height: 32px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+</style>
+
+<div ng-controller="sale" class="app-panel">
+    <div>
+        <img src="drawable/img_sell_photo.jpg" style="width: 700px;">
+    </div>
+    <div class="app-title">
+        <img src="drawable/icon_sell_credit_score.png">
+        <span>提现</span>
+    </div>
+    <form class="app-form" name="form" class="form-horizontal" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <div>请输入信用积分</div>
+            <input placeholder="出售积分(单位20积分)" ng-model="formdata.pointAmountTmp" ng-pattern="/^\d*$/" required/>
+            <!--<div>最低出售量100</div>-->
+        </div>
+        <div>
+            <div>请输入二级密码</div>
+            <input type="password" ng-model="formdata.operatePasswd" placeholder="二级密码" required/>
+            <div>确保交易安全输入密码</div>
+        </div>
+        <div>
+            <div>&nbsp;</div>
+            <button class="btn btn-success" type="submit" ng-disabled="form.$invalid">确认出售</button>
+        </div>
+    </form>
+</div>

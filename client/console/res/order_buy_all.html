@@ -1,0 +1,37 @@
+<div ng-controller="order_buy_all">
+	<div style="position: relative;">
+        <button class="btn btn-success" ng-click="exportExcelForPage()" style="margin: 10px;">导出本页</button>
+		<button class="btn btn-success" ng-click="exportExcelForAll()" style="margin: 0px;">导出全部</button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>购买账号</th>
+            <th>购买信用分</th>
+            <th>手续费</th>
+            <th>出售时间</th>
+            <th>购买时间</th>
+            <th>确认时间</th>
+            <th>交易状态</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="it in orderList">
+            <td>{{it.orderId}}</td>
+            <td>{{it.username}}</td>
+            <td>{{it.pointAmount}}</td>
+            <td>{{it.fee}}</td>
+            <td>{{it.createTime}}</td>
+            <td>{{it.buyTime}}</td>
+            <td>{{it.confirmTime}}</td>
+            <td>{{it.status}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="position: relative;">
+        <ul class="pagination" style="margin: 0px; position: absolute; right: 40px;top: 0px;"></ul>
+    </div>
+
+</div>

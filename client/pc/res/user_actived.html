@@ -1,0 +1,52 @@
+<style>
+    th {
+        background-color: #5864AE;
+        color: #ffffff;
+    }
+
+    .app-body {
+        margin: 20px 30px 20px 30px;
+        width: 980px;
+    }
+
+    .app-panel {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        line-height: 40px;
+        font-size: 18px;
+    }
+</style>
+
+<div ng-controller="user_actived" class="app-body">
+    <div class="app-title">我的直推会员</div>
+    <div class="app-panel">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>用户账号</th>
+                <th>手机号</th>
+                <th>姓名</th>
+                <th>信用分</th>
+                <th>注册时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="it in listdata.userList">
+                <td>{{it.userId}}</td>
+                <td>{{it.username}}</td>
+                <td>{{it.mobile}}</td>
+                <td>{{it.name}}</td>
+                <td>{{it.points}}</td>
+                <td>{{it.createTime}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <ul class="pagination" style="margin: 0px 0px 14px 14px;"></ul>
+        </div>
+    </div>
+</div>

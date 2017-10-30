@@ -1,0 +1,125 @@
+<style>
+    .app-panel {
+        width: 600px;
+        background-color: #ffffff;
+        margin: 40px 50px 40px 50px;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-tab {
+        background-color: #5864AE;
+        line-height: 40px;
+        color: #ffffff;
+    }
+
+    .app-tab > div {
+        display: inline-block;
+        width: 150px;
+        text-align: center;
+    }
+
+    .app-tab > div > img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .app-tab-highlight {
+        background-color: #424D8F;
+    }
+
+    .app-form {
+        width: 340px;
+        margin: auto;
+        padding: 30px 0px 30px 0px;
+    }
+
+    .app-form > div {
+        margin-top: 20px;
+    }
+
+    .app-form > div > div {
+        width: 60px;
+        display: inline-block;
+        text-align: right;
+        margin-right: 20px;
+    }
+
+    .app-form > div > input {
+        width: 250px;
+        height: 32px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+</style>
+
+<div ng-controller="updatepwd" class="app-panel">
+    <div class="app-tab">
+        <div ng-click="toggle(0)" ng-class="{true: 'app-tab-highlight', false: ''}[changePasswd]">
+            <img src="drawable/icon_change_password.png">
+            <span>修改登录密码</span>
+        </div>
+        <div ng-click="toggle(1)" ng-class="{true: 'app-tab-highlight', false: ''}[changeOperatePasswd]">
+            <img src="drawable/icon_change_safe_pw.png">
+            <span>修改二级密码</span>
+        </div>
+        <div ng-click="toggle(2)" ng-class="{true: 'app-tab-highlight', false: ''}[changeMobile]">
+            <img src="drawable/icon_change_phone.png">
+            <span>修改绑定手机</span>
+        </div>
+    </div>
+
+    <form class="app-form" name="form1" class="form-horizontal" ng-submit="submitPasswd(form1.$valid)" ng-show="changePasswd" novalidate>
+        <div>
+            <div>原密码</div>
+            <input ng-model="formdata.oldpwd" placeholder="首次登录密码666666" required/>
+        </div>
+        <div>
+            <div>新密码</div>
+            <input ng-model="formdata.password" type="password" required/>
+        </div>
+        <div>
+            <div>确认密码</div>
+            <input ng-model="formdata.password1" type="password" required/>
+        </div>
+        <div>
+            <div>&nbsp;</div>
+            <button type="submit" ng-disabled="form1.$invalid" class="btn btn-success">确定修改</button>
+        </div>
+    </form>
+
+    <form class="app-form" name="form2" class="form-horizontal" ng-submit="submitOperatePasswd(form2.$valid)" ng-show="changeOperatePasswd" novalidate>
+        <div>
+            <div>原密码</div>
+            <input ng-model="formdata.oldpwd" placeholder="首次二级密码888888" required/>
+        </div>
+        <div>
+            <div>新密码</div>
+            <input ng-model="formdata.password" type="password" required/>
+        </div>
+        <div>
+            <div>确认密码</div>
+            <input ng-model="formdata.password1" type="password" required/>
+        </div>
+        <div>
+            <div>&nbsp;</div>
+            <button type="submit" ng-disabled="form2.$invalid" class="btn btn-success">确定修改</button>
+        </div>
+    </form>
+
+    <form class="app-form" name="form3" class="form-horizontal" ng-submit="submitMobile(form3.$valid)" ng-show="changeMobile" novalidate>
+        <div>
+            <div>新手机号</div>
+            <input name="mobile" ng-model="formdata.mobile" placeholder="输入正确手机号码" ng-pattern="/^1[3578]{1}\d{9}\d?$/" required/>
+        </div>
+        <div>
+            <div>验证码</div>
+            <input ng-model="formdata.code" style="width: 166px;" placeholder="输入6位数字验证码" ng-pattern="/^\d{6}$/" required/>
+            <button ng-click="sendcode(form3.mobile.$valid)" ng-disabled="form3.mobile.$invalid" class="btn btn-primary" style="width: 80px;height: 32px;">发送短信</button>
+        </div>
+        <div>
+            <div>&nbsp;</div>
+            <button type="submit" ng-disabled="form3.$invalid" class="btn btn-success">确定修改</button>
+        </div>
+    </form>
+</div>

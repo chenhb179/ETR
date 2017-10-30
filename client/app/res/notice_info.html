@@ -1,0 +1,23 @@
+<style>
+    .app-list {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        top: 50px;
+        padding: 14px;
+    }
+</style>
+
+<div ng-controller="notice_info">
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>最新公告</div>
+    </div>
+
+    <div class="app-list">
+        <div style="font-size: 18px;">{{notice.title}}</div>
+        <div style="color: gray; font-size: 13px;margin-top: 14px;">{{notice.type}}&nbsp;&nbsp;&nbsp;{{notice.createTime}}</div>
+        <div style="margin-top: 14px; font-size: 14px;">{{notice.content}}</div>
+    </div>
+</div>

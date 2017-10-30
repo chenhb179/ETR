@@ -1,0 +1,62 @@
+<style>
+    form {
+        padding: 14px;
+        text-align: center;
+    }
+
+    form > div {
+        line-height: 40px;
+        margin-top: 8px;
+        height: 40px;
+    }
+
+    input {
+        width: 100%;
+        height: 32px;
+        background-color: #eeeeee;
+        border: none;
+        padding: 0px 14px 0px 14px;
+    }
+
+    select {
+        width: 100%;
+        height: 32px;
+        background-color: #eeeeee;
+        border: none;
+        padding: 0px 14px 0px 14px;
+    }
+</style>
+
+<div>
+    <div style="line-height: 40px; color: #ffffff; text-align: center; background-color: #3A8FFF; border-radius: 5px 5px 0px 0px; font-size: 16px;">激活会员</div>
+    <form name="form" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <div class="col-xs-4">放置位置</div>
+            <div class="col-xs-8">
+                <input ng-model="formdata.parentAccount" placeholder="请填写放置位置" required>
+            </div>
+        </div>
+        <div>
+            <div class="col-xs-4" style="padding: 0px;">放置节点</div>
+            <div class="col-xs-8" style="padding: 0px;">
+                <select ng-model="formdata.isLeft" ng-init="formdata.isLeft='1'" required>
+                    <option value="1">左边</option>
+                    <option value="0">右边</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div class="col-xs-4">会员等级</div>
+            <div class="col-xs-8">
+                <select ng-model="formdata.levelCard" ng-init="formdata.levelCard='1'" required>
+                    <option value="1">普通卡</option>
+                    <option value="2">金卡</option>
+                    <option value="3">白金卡</option>
+                    <!--<option value="4">钻石卡</option>
+                    <option value="5">黑钻卡</option>-->
+                </select>
+            </div>
+        </div>
+        <button type="submit" ng-disabled="form.$invalid" class="btn btn-success" style="margin-top: 14px;">立即激活</button>
+    </form>
+</div>

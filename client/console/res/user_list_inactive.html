@@ -1,0 +1,23 @@
+<div ng-controller="user_list_inactive">
+    <table class="table table-hover" ng-click="onListItemClick($event)">
+        <thead>
+        <tr>
+            <th>账号</th>
+            <th>手机</th>
+            <th>注册时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="it in userList">
+            <td>{{it.username}}</td>
+            <td>{{it.mobile}}</td>
+            <td>{{it.createTime}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="position: relative;">
+        <ul class="pagination" style="margin: 0px; position: absolute; right: 40px;top: 0px;"></ul>
+    </div>
+
+</div>

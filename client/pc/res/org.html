@@ -1,0 +1,107 @@
+<style>
+    .app-org {
+        padding: 14px;
+        overflow: auto;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+    }
+
+    .app-org-search {
+        background-color: #ffffff;
+        width: 290px;
+        padding: 8px;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-org-search > div {
+        height: 30px;
+    }
+
+    .app-org-search input {
+        width: 170px;
+        height: 28px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+
+    .app-org-search button {
+        height: 28px;
+    }
+
+    .jOrgChart {
+        margin: 10px;
+        padding: 0px;
+    }
+
+    .jOrgChart .node {
+        font-size: 14px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        border: 1px solid #23C36B;
+        color: #F38630;
+        box-shadow: 0px 0px 5px #23C36B;
+        height: 100px;
+    }
+
+    .member {
+    }
+
+    .member > div:nth-child(1) {
+        background-color: #23C36B;
+        color: #ffffff;
+        line-height: 30px;
+        font-size: 14px;
+    }
+
+    .member > div:nth-child(2) {
+        margin-top: 6px;
+        color: #000000;
+        font-size: 12px;
+    }
+
+    .member > div:nth-child(3) {
+        margin-top: 4px;
+        color: #000000;
+        font-size: 12px;
+    }
+
+    .member > div:nth-child(4) {
+        margin-top: 4px;
+        color: #000000;
+        font-size: 12px;
+    }
+    .member > div:nth-child(5) {
+        margin-top: 4px;
+        color: #000000;
+        font-size: 12px;
+    }
+</style>
+
+<div ng-controller="org" class="app-org">
+
+    <form class="app-org-search" name="form" class="form-horizontal" ng-submit="filter(form.$valid)" novalidate>
+        <div>团队组织结构</div>
+        <div>
+            <input ng-model="filterAccount" placeholder="输入搜索账号" required=""/>
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary btn-sm">搜索</button>
+            <button class="btn btn-default btn-sm" ng-click="restore()">还原</button>
+        </div>
+    </form>
+
+    <ul id="org" style="display:none"></ul>
+    <div id="chart" class="orgChart"></div>
+
+    <!--<li>-->
+    <!--<div class="member">-->
+    <!--<div>${username}</div>-->
+    <!--<div>姓名: ${name}</div>-->
+    <!--<div>等级: ${level}</div>-->
+    <!--<div>信用分: ${points}</div>-->
+    <!--</div>-->
+    <!--<ul id="org_node_${userId}"></ul>-->
+    <!--</li>-->
+</div>

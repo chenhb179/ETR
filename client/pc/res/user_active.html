@@ -1,0 +1,98 @@
+<style>
+    .app-panel {
+        width: 700px;
+        background-color: #ffffff;
+        margin: 40px 50px 40px 50px;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        text-align: center;
+        line-height: 40px;
+        background-color: #5864AE;
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+    .app-subtitle {
+        line-height: 30px;
+        text-align: center;
+        color: #ffffff;
+        background-color: #4D59A1;
+    }
+
+    .app-form {
+        width: 460px;
+        margin: auto;
+        padding: 30px 0px 30px 0px;
+    }
+
+    .app-form > div {
+        margin-top: 20px;
+    }
+
+    .app-form > div > div:nth-child(1) {
+        width: 100px;
+        display: inline-block;
+        text-align: right;
+        margin-right: 20px;
+    }
+
+    .app-form > div > div:nth-child(3) {
+        width: 10px;
+        text-align: right;
+        display: inline-block;
+    }
+
+    .app-form > div > input, select {
+        width: 250px;
+        height: 32px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+</style>
+
+<div ng-controller="user_active" class="app-panel">
+    <div class="app-title">会员激活</div>
+    <div class="app-subtitle">友情提示: 带星号为必填信息，请输入准确信息</div>
+
+    <form class="app-form" name="form" class="form-horizontal" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <div>待激活账户</div>
+            <span>{{account}}</span>
+        </div>
+        <div>
+            <div>当前可用信用分</div>
+            <span>{{user.points}}</span>
+        </div>
+        <div>
+            <div>放置位置</div>
+            <input ng-model="formdata.parentAccount" required/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>放置节点</div>
+            <select ng-model="formdata.isLeft" ng-init="formdata.isLeft='1'" required>
+                <option value="1">左边</option>
+                <option value="0">右边</option>
+            </select>
+            <div>*</div>
+        </div>
+        <div>
+            <div>会员等级</div>
+            <select ng-model="formdata.levelCard" ng-init="formdata.levelCard='1'" required>
+                <option value="1">普通卡</option>
+                <option value="2">金卡</option>
+                <option value="3">白金卡</option>
+                <!--<option value="4">钻石卡</option>
+                <option value="5">黑钻卡</option>-->
+            </select>
+            <div>*</div>
+        </div>
+        <div>
+            <div>&nbsp;</div>
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-success">保存修改</button>
+        </div>
+    </form>
+</div>

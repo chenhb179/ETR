@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>登录</title>
+        <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style/style.css" rel="stylesheet">
+
+        <style>
+            body{
+                background-image: url("drawable/bg_login.jpg");
+                background-size: 100%;
+            }
+            form{
+                position: absolute;
+                bottom: 36px;
+                left:36px;
+                right:36px;
+            }
+            .app-form-panel{
+                background-color: #ffffff;
+                border-radius: 10px;
+                border: 1px solid #cccccc;
+                padding: 14px;
+                box-shadow: 1px 1px 10px #cccccc;
+            }
+            input{
+                border: none;
+                width: 100%;
+                height: 30px;
+            }
+        </style>
+
+        <script src="libs/angular.min.js"></script>
+        <script src="libs/jquery-3.2.1.min.js"></script>
+        <script src="libs/jquery-md5.js"></script>
+        <script src="libs/juicer-min.js"></script>
+    </head>
+
+    <body ng-app="signinApp" ng-controller="signin">
+        <form name="form" ng-submit="submitForm(form.$valid)" novalidate>
+            <div class="app-form-panel">
+                <div>
+                    <input ng-model="formdata.username" placeholder="用户名" required>
+                </div>
+                <div style="background-color: #dcdcdc;height: 1px;margin: 12px 0px 12px 0px;">&nbsp;</div>
+                <div>
+                    <input ng-model="formdata.passwd" type="password" placeholder="密码" required>
+                </div>
+            </div>
+            <div style="text-align: right;padding: 8px 0px 8px 0px;">
+                <a href="findpwd.html" style="color: #ffffff;">找回密码</a>
+            </div>
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-block btn-lg btn-warning" style="border-radius: 50px;background-color: #FFEB09;color: #EF7B3E;box-shadow: 1px 1px 10px #cccccc;">登录</button>
+        </form>
+    </body>
+</html>
+
+<script src="libs/__code__.js"></script>

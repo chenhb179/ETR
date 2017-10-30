@@ -1,0 +1,106 @@
+<style>
+
+    .app-body {
+        background-color: #ffffff;
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        top: 50px;
+        bottom: 0px;
+        overflow-y: auto;
+    }
+
+    form {
+        padding: 14px 0px 0px 0px;
+    }
+
+    form > div {
+        border-bottom: 1px solid #e1e1e1;
+        line-height: 40px;
+        height: 44px;
+        background-color: #ffffff;
+        padding: 0px 0px 0px 14px;
+    }
+
+    form input {
+        border: none;
+        width: 100%;
+    }
+	
+	form > div >h4{
+		font-weight:bold;
+	}
+	
+	form > div >img{
+		width:35%;
+	}
+</style>
+
+<div ng-controller="buy_sure">
+
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>收款信息</div>
+    </div>
+
+    <div class="app-body">
+		<div>
+            <div class="col-xs-3" style="padding: 0px;"><h4>二维码充值</h4></div>
+            <div class="col-xs-9" style="padding: 0px;width:100%;">
+                <img src="drawable/qrcode_3.png"/>
+            </div>
+		</div>
+        <form name="form" novalidate>
+			<div>
+                <div class="col-xs-3" style="padding: 0px;"><h4>转账充值</h4></div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">收款姓名</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <span>邱京君</span>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">银行开户行</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <span>中国工商银行福建省宁德市东侨支行</span>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">银行账号</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <span>6222081407000539539</span>
+                </div>
+            </div>
+			<div>
+                <div class="col-xs-3" style="padding: 0px;">银行开户行</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <span>中国农业银行福建省福州支行</span>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">银行账号</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <span>6228480068600507872</span>
+                </div>
+            </div>
+			<div>
+                <div class="col-xs-3" style="padding: 0px;">银行开户行</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <span>招商银行福建省福州市东门支行</span>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">银行账号</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <span>6214866003339887</span>
+                </div>
+            </div>
+        </form>
+
+        <div style="padding: 14px;">
+            <button ng-click="buy_sure()" class="btn btn-primary btn-block">确认充值</button>
+        </div>
+    </div>
+
+</div>

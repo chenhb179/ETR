@@ -1,0 +1,67 @@
+<style>
+    .app-panel {
+        width: 600px;
+        background-color: #ffffff;
+        margin: 40px 50px 40px 50px;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        text-align: center;
+        line-height: 40px;
+        background-color: #5864AE;
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+    .app-form {
+        width: 400px;
+        margin: auto;
+        padding: 30px 0px 30px 0px;
+    }
+
+    .app-form > div {
+        margin-top: 20px;
+    }
+
+    .app-form > div > div {
+        width: 100px;
+        display: inline-block;
+        text-align: right;
+        margin-right: 20px;
+    }
+
+    .app-form > div > input {
+        width: 250px;
+        height: 32px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+</style>
+
+<div ng-controller="transfer_jidian" class="app-panel">
+    <div class="app-title">绩点转让</div>
+    <form class="app-form" name="form" class="form-horizontal" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <div>绩点</div>
+            <span>{{jidian}}</span>
+        </div>
+        <div>
+            <div>转出绩点</div>
+            <input ng-model="formdata.amount" ng-pattern="/^\d*$/" required/>
+        </div>
+        <div>
+            <div>转入账户</div>
+            <input ng-model="formdata.receiverAccount" required/>
+        </div>
+        <div>
+            <div>二级密码</div>
+            <input ng-model="formdata.operatePasswd" type="password" required/>
+        </div>
+        <div>
+            <div>&nbsp;</div>
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-success">确认转出</button>
+        </div>
+    </form>
+</div>

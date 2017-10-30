@@ -1,0 +1,49 @@
+<style>
+    .app-list {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        top: 50px;
+    }
+
+    .app-list > div {
+        border-bottom: solid 1px #eeeeee;
+        position: relative;
+        height: 60px;
+        line-height: 60px;
+    }
+
+    .app-list > div:active {
+        background-color: #f1f1f1;
+    }
+
+    .app-list > div > img {
+        width: 36px;
+        margin-left: 14px;
+        height: 36px;
+    }
+
+    .app-list > div > div {
+        position: absolute;
+        left: 64px;
+        top: 0px;
+        right: 14px;
+        bottom: 0px;
+        line-height: 60px;
+    }
+</style>
+
+<div ng-controller="notice">
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>最新公告</div>
+    </div>
+
+    <div class="app-list" ng-click="onListItemClick($event)">
+        <div ng-repeat="it in listdata.noticeList">
+            <img index="{{$index}}" src="drawable/icon_news.png">
+            <div index="{{$index}}" class="app-singleLine">{{it.title}}</div>
+        </div>
+    </div>
+</div>

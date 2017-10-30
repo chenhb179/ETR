@@ -1,0 +1,34 @@
+<style>
+    .app-notice-title {
+        color: #4157B0;
+        padding: 8px 14px 0px 14px;
+        font-size: 18px;
+        line-height: 40px;
+    }
+
+    .app-notice-type {
+        color: gray;
+        padding: 0px 14px 8px 14px;
+        font-size: 13px;
+        border-bottom: solid 1px #dddddd;
+    }
+
+    .app-notice-content {
+        padding: 14px;
+    }
+
+    .app-notice-btn {
+        line-height: 60px;
+        text-align: right;
+        padding-right: 14px;
+    }
+</style>
+
+<div class="app-dialog">
+    <div class="app-notice-title">{{notice.title}}</div>
+    <div class="app-notice-type">{{notice.type}}&nbsp;&nbsp;{{notice.createTime}}</div>
+    <div class="app-notice-content"><notice></>{{notice.content}}</notice></div>
+    <div class="app-notice-btn">
+        <button class="btn btn-default" ng-click="ok()">关闭</button>
+    </div>
+</div>

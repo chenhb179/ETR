@@ -1,0 +1,52 @@
+<style>
+    .app-list {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background-color: #f0f0f0;
+        top: 50px;
+        overflow-y: auto;
+        padding-bottom: 8px;
+    }
+
+    .app-list > div {
+        padding: 8px 8px 0px 8px;
+    }
+
+    .app-list > div > div {
+        border-radius: 4px;
+        background-color: #ffffff;
+        border: 1px solid #eaeaea;
+        box-shadow: 1px 1px 5px #eaeaea;
+        position: relative;
+        padding: 14px;
+    }
+</style>
+
+<div ng-controller="transfer_list">
+
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>转让记录</div>
+    </div>
+
+    <div class="app-list">
+        <div ng-repeat="it in listdata.transferList">
+            <div>
+                <img src="drawable/icon_user_default.png" style="width: 50px;">
+                <div style="position: absolute; left: 64px; top: 0px; right: 0px; bottom: 0px;line-height: 25px;padding: 14px;">
+                    <div style="position: relative">
+                        <span>{{it.receiverAccount}}</span>
+                        <span style="position: absolute; right: 0px;color: cornflowerblue">成功</span>
+                    </div>
+                    <div style="position: relative">
+                        <span>转出: {{it.amount}}</span>
+                        <span style="position: absolute; right: 0px; color: gray">{{it.createTime}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

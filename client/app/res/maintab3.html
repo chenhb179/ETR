@@ -1,0 +1,97 @@
+<style>
+    .app-header {
+        background-color: #3A8FFF;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        height: 20%;
+        text-align: center;
+        padding-top: 9%;
+    }
+
+    .app-tabcontent {
+        background-image: url("drawable/bg_credit_score.png");
+        background-size: 100% 100%;
+        position: fixed;
+        left: 0px;
+        top: 9%;
+        right: 0px;
+        bottom: 54px;
+        padding: 20% 5% 0% 5%;
+    }
+
+    .app-tabcontent img {
+        width: 90%;
+        margin-bottom: 50%;
+    }
+</style>
+
+<div ng-controller="maintab3">
+    <div class="app-header">
+        <a href="#">
+            <img src="drawable/btn_credit_score_news.png" style="width: 30%;height: 68%;">
+        </a>
+    </div>
+
+    <div class="app-tabcontent">
+        <div class="col-xs-4" style="text-align: center;display: none;">
+            <a href="#/transfer_point">
+                <img src="drawable/btn_credit_score_score.png">
+            </a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;">
+            <a href="#/change_list">
+                <img src="drawable/btn_credit_score_changed.png">
+            </a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;">
+            <a href="#/reward_list">
+                <img src="drawable/btn_credit_score_recommend.png">
+            </a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;">
+            <a href="#/sell_list">
+                <img src="drawable/btn_credit_score_sell.png">
+            </a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;">
+            <a href="#/buy_list">
+                <img src="drawable/btn_credit_score_buy.png">
+            </a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;display: none;">
+            <a href="#/point_to_jidian">
+                <img src="drawable/btn_credit_score_to_point.png">
+            </a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;display: none;">
+            <a href="#/transfer_jidian">
+                <img src="drawable/btn_credit_score_point.png">
+            </a>
+        </div>
+    </div>
+
+    <div class="app-tab">
+        <div class="col-xs-3">
+            <a href="#/game">
+                <img src="drawable/icon_com_game.png">
+            </a>
+        </div>
+        <div class="col-xs-3">
+            <a href="#/maintab1">
+                <img src="drawable/icon_com_trasaction.png">
+            </a>
+        </div>
+        <div class="col-xs-3" style="background-color: #75B1FF;">
+            <a href="#/maintab3">
+                <img src="drawable/icon_com_credit.png">
+            </a>
+        </div>
+        <div class="col-xs-3">
+            <a href="#/maintab4">
+                <img src="drawable/icon_com_member.png">
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ETR国际信用社区</title>
+
+        <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="libs/jquery.jorgchart/jquery.jOrgChart.css" rel="stylesheet">
+
+        <script src="libs/angular.min.js"></script>
+        <script src="libs/angular-route.js"></script>
+        <script src="libs/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+        <script src="libs/jquery-3.2.1.min.js"></script>
+        <script src="libs/jquery-md5.js"></script>
+        <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+        <script src="libs/bootstrap-paginator.min.js"></script>
+        <script src="libs/jquery.jorgchart/jquery.jOrgChart.js"></script>
+        <script src="libs/juicer-min.js"></script>
+        <script src="libs/qrcode.min.js"></script>
+        <script src="libs/aliyun-oss-sdk.min.js"></script>
+
+        <style>
+            .app-actionbar {
+                background-color: #203037;
+                height: 60px;
+                line-height: 60px;
+                box-shadow: 0 0 14px #000;
+                z-index: 100;
+                position: relative;
+            }
+
+            .app-actionbar > div:nth-child(1) {
+                color: #ffffff;
+                font-size: 28px;
+                padding-left: 32px;
+            }
+
+            .app-actionbar > div:nth-child(2) {
+                position: absolute;
+                right: 80px;
+                top: 0px;
+            }
+
+            .app-actionbar li img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .app-menu {
+                position: absolute;
+                left: 0x;
+                bottom:0px;
+                width:280px;
+                background-color: #4D59A1;
+                overflow-y: auto;
+                top:344px;
+            }
+
+            .app-menu img {
+                width: 28px;
+                height: 28px;
+                margin-right: 14px;
+            }
+
+            .app-menu a {
+                color: #ffffff;
+            }
+
+            .app-menu > div > div:nth-child(1) {
+                line-height: 44px;
+                height: 44px;
+                font-size: 14px;
+                padding-left: 14px;
+                color: #ffffff;
+            }
+
+            .app-menu > div > div:nth-child(2) > div {
+                line-height: 36px;
+                background-color: #424D8F;
+                font-size: 13px;
+                padding-left: 40px;
+            }
+
+            .app-userinfo {
+                background-color: #46529E;
+                padding: 14px;
+                position: absolute;
+                left: 0px;
+                width: 280px;
+                height: 284px;
+                top: 60px;
+                color: #ffffff;
+                font-size: 14px;
+                overflow: auto;
+            }
+
+            .app-userinfo > div {
+                line-height: 32px;
+                height: 32px;
+            }
+
+            .app-userinfo > div > div {
+                width: 100px;
+                display: inline-block;
+            }
+
+            .app-userinfo > div > div >img {
+                width: 16px;
+                height: 16px;
+            }
+
+            .app-completeinfo{
+                background-color: #000000;
+                opacity: 0.6;
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                left:0px;
+                top:60px;
+                bottom:0px;
+                width:280px;
+                font-size: 32px;
+                color: #ffffff;
+                text-align: center;
+            }
+
+            .app-view {
+                position: absolute;
+                left: 280px;
+                right: 0px;
+                top: 60px;
+                bottom: 0px;
+                padding: 0px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                background-color: #F2F2F2;
+            }
+
+
+            ::-webkit-scrollbar {width: 5px;height:6px;}
+            ::-webkit-scrollbar-track-piece{background-color: #4D59A1;margin: -2px;}
+            ::-webkit-scrollbar-thumb{background: #30365E;min-height: 150px;min-width: 150px;border-radius: 10px;}
+            ::-webkit-scrollbar-thumb:vertical:hover{background: #555555}
+            ::-webkit-scrollbar-thumb:horizontal:hover{background: #555555}
+        </style>
+    </head>
+
+    <body>
+        <!--ActionBar-->
+        <div class="app-actionbar">
+            <div>ETR国际信用社区</div>
+            <div>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#用户弹窗" style="color: #ffffff;font-size: 16px;">
+                    <span id="profile">用户: 未登录</span>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#/updateinfo">
+                            <img src="drawable/icon_user_info.png">
+                            <span>个人资料</span>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#/updatepwd">
+                            <img src="drawable/inco_password.png">
+                            <span>修改密码</span>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="signin.html">
+                            <img src="drawable/icon_login_out.png">
+                            <span>退出</span>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#/feedback">
+                            <img src="drawable/icon_feedback.png">
+                            <span>留言反馈</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--Menu-->
+        <div class="app-menu">
+            <div>
+                <div>
+                    <img src="drawable/icon_slider_home.png">
+                    <a href="#/game">首页</a>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="drawable/icon_slider_transaction.png">
+                    <a data-toggle="collapse" href="#充值提现">充值提现</a>
+                </div>
+                <div id="充值提现" class="panel-collapse collapse">
+                    <div>
+                        <a href="#sale">提现</a>
+                    </div>
+                    <div>
+                        <a href="#/buy">充值</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="drawable/icon_slider_transaction_manager.png">
+                    <a data-toggle="collapse" href="#记录明细">记录明细</a>
+                </div>
+                <div id="记录明细" class="panel-collapse collapse">
+                    <div>
+                        <a href="#/sale_notfinish">未完成提现列表</a>
+                    </div>
+                    <div>
+                        <a href="#/sale_finish">已完成提现列表</a>
+                    </div>
+                    <div>
+                        <a href="#/buy_notfinish">未完成充值列表</a>
+                    </div>
+                    <div>
+                        <a href="#/buy_finish">已完成充值列表</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="drawable/icon_slider_vip.png">
+                    <a data-toggle="collapse" href="#会员中心">会员中心</a>
+                </div>
+                <div id="会员中心" class="panel-collapse collapse">
+                    <div>
+                        <a href="#/updateinfo">个人资料</a>
+                    </div>
+                    <div>
+                        <a href="#/updatepwd">密码管理</a>
+                    </div>
+                    <div>
+                        <a href="#/qrcode">我的推广二维码</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="drawable/icon_slider_vip_manager.png">
+                    <a data-toggle="collapse" href="#会员管理">会员管理</a>
+                </div>
+                <div id="会员管理" class="panel-collapse collapse">
+                    <div>
+                        <a href="#upgrade">账号升级</a>
+                    </div>
+                    <div style="display:none;">
+                        <a href="#quicksignup">会员快速注册</a>
+                    </div>
+                    <div>
+                        <a href="#/org">团队组织结构</a>
+                    </div>
+                    <div>
+                        <a href="#/user_actived">直推会员</a>
+                    </div>
+                    <div>
+                        <a href="#/user_inactive">待激活会员</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="drawable/icon_slider_score.png">
+                    <a data-toggle="collapse" href="#积分管理">积分管理</a>
+                </div>
+                <div id="积分管理" class="panel-collapse collapse">
+                    <div style="display: none;">
+                        <a href="#/transfer_point">信用分转让</a>
+                    </div>
+                    <div style="display: none">
+                        <a href="#/point_to_jidian">信用分转绩点</a>
+                    </div>
+                    <div style="display: none">
+                        <a href="#/transfer_jidian">绩点转让</a>
+                    </div>
+                    <div style="display: none">
+                        <a href="#/transfer_list">信用分转让记录</a>
+                    </div>
+                    <div>
+                        <a href="#/change_list">信用分变更记录</a>
+                    </div>
+                    <div>
+                        <a href="#/reward?type=直推奖励">分享奖励</a>
+                    </div>
+                    <div>
+                        <a href="#/reward?type=见点奖励">团队津贴</a>
+                    </div>
+                    <div>
+                        <a href="#/reward?type=对碰奖励">平衡奖励</a>
+                    </div>
+                    <div>
+                        <a href="#/reward?type=管理奖励">管理津贴</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="drawable/icon_slider_info_manager.png">
+                    <a data-toggle="collapse" href="#信息管理">信息管理</a>
+                </div>
+                <div id="信息管理" class="panel-collapse collapse">
+                    <div>
+                        <a href="#notice">公告列表</a>
+                    </div>
+                    <div>
+                        <a href="#/feedback">留言反馈</a>
+                    </div>
+                    <div>
+                        <a href="#/customer">联系客服</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--App-->
+        <div ng-app="app" ng-controller="main">
+            <!-- 用户信息 -->
+            <div  class="app-userinfo">
+                <div>
+                    <div>用户ID</div>
+                    <div>{{user.username}}</div>
+                </div>
+                <div>
+                    <div>姓名</div>
+                    <div>{{user.name}}</div>
+                </div>
+                <div>
+                    <div>信用分</div>
+                    <div>{{user.points}}</div>
+                </div>
+                <div style="display: none">
+                    <div>绩点</div>
+                    <div>{{user.jidian}}</div>
+                </div>
+                <div>
+                    <div>股权积分</div>
+                    <div>{{user.reinvestPoints}}</div>
+                </div>
+                <div>
+                    <div>购物积分</div>
+                    <div>{{user.shopPoints}}</div>
+                </div>
+                <div>
+                    <div>会员等级</div>
+                    <div>{{user.level}}</div>
+                </div>
+                <div>
+                    <div>信用等级</div>
+                    <div id="creditLevel"></div>
+                </div>
+            </div>
+
+            <table ng-show="completeUserInfo" class="app-completeinfo">
+                <tr>
+                    <td>
+                        <div>请</div>
+                        <div>先</div>
+                        <div>完</div>
+                        <div>善</div>
+                        <div>用</div>
+                        <div>户</div>
+                        <div>信</div>
+                        <div>息</div>
+                    </td>
+                </tr>
+            </table>
+
+            <!--内容-->
+            <div ng-view class="app-view"></div>
+        </div>
+    </body>
+</html>
+
+<script src="libs/__code__.js"></script>

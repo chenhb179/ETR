@@ -1,0 +1,154 @@
+<style>
+    .app-form input {
+        width: 100px;
+        height: 24px;
+    }
+
+    .app-form label {
+        width: 50px;
+    }
+</style>
+
+<div ng-controller="setting">
+    <form name="form" class="app-form" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <div>拆分率</div>
+            <div style="margin-top: 14px;" class="clearfix">
+                <div class="col-xs-4">
+                    <label>普卡: </label>
+                    <input type="number" ng-model="setting.ChaiFenLv.PuKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>金卡: </label>
+                    <input type="number" ng-model="setting.ChaiFenLv.JinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>白金卡: </label>
+                    <input type="number" ng-model="setting.ChaiFenLv.BaiJinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>钻石卡: </label>
+                    <input type="number" ng-model="setting.ChaiFenLv.ZuanShiKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>黑钻卡: </label>
+                    <input type="number" ng-model="setting.ChaiFenLv.HeiZuanKa" required>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 28px;">
+            <div>分享奖励</div>
+            <div style="margin-top: 14px;" class="clearfix">
+                <div class="col-xs-4">
+                    <label>普卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.ZhiTui.PuKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>金卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.ZhiTui.JinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>白金卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.ZhiTui.BaiJinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>钻石卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.ZhiTui.ZuanShiKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>黑钻卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.ZhiTui.HeiZuanKa" required>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 28px;">
+            <div>平衡奖励</div>
+            <div style="margin-top: 14px;" class="clearfix">
+                <div class="col-xs-4">
+                    <label>普卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.DuiPeng.PuKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>金卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.DuiPeng.JinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>白金卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.DuiPeng.BaiJinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>钻石卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.DuiPeng.ZuanShiKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>黑钻卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.DuiPeng.HeiZuanKa" required>
+                </div>
+            </div>
+            <div style="margin-top: 14px;" class="clearfix">
+                <div class="col-xs-6">
+                    <label style="width: 140px;">超过20代后奖励减半: </label>
+                    <input type="checkbox" ng-model="setting.JiangLi.DuiPeng.TreeLevel20JianBan" style="width: 20px; height: 20px; border: none;position: relative;bottom: -5px;">
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 28px;">
+            <div>管理津贴</div>
+            <div style="margin-top: 14px;" class="clearfix">
+                <div class="col-xs-4">
+                    <label>普卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.GuanLi.PuKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>金卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.GuanLi.JinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>白金卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.GuanLi.BaiJinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>钻石卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.GuanLi.ZuanShiKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>黑钻卡: </label>
+                    <input type="number" ng-model="setting.JiangLi.GuanLi.HeiZuanKa" required>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 28px;">
+            <div>团队津贴</div>
+            <div style="margin-top: 14px;" class="clearfix">
+                <div class="col-xs-4">
+                    <label>普卡: </label>
+                    <input ng-model="setting.JiangLi.JianDian.PuKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>金卡: </label>
+                    <input ng-model="setting.JiangLi.JianDian.JinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>白金卡: </label>
+                    <input ng-model="setting.JiangLi.JianDian.BaiJinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>钻石卡: </label>
+                    <input ng-model="setting.JiangLi.JianDian.ZuanShiKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>黑钻卡: </label>
+                    <input ng-model="setting.JiangLi.JianDian.HeiZuanKa" required>
+                </div>
+            </div>
+        </div>
+
+        <div ng-model="admin_username" ng-if="admin_username == 'admin'">
+            <button class="btn btn-default" ng-disabled="form.$invalid" type="submit">保存设置</button>
+        </div>
+    </form>
+</div>

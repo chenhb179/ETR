@@ -1,0 +1,73 @@
+<style>
+</style>
+
+<div ng-controller="user_add">
+    <form name="form" class="app-form" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <label>用户名*</label>
+            <input ng-model="formdata.username" placeholder="请输入用户名" required>
+        </div>
+        <div>
+            <label>信用分*</label>
+            <input ng-model="formdata.points" placeholder="请输入信用分" ng-pattern="/^\d*$/" required>
+        </div>
+        <div>
+            <label>会员等级*</label>
+            <select ng-model="formdata.level" ng-init="formdata.level='1'">
+                <option value="1">普卡</option>
+                <option value="2">金卡</option>
+                <option value="3">白金卡</option>
+                <option value="4">钻石卡</option>
+                <option value="5">黑钻卡</option>
+            </select>
+        </div>
+        <div>
+            <label>放置位置*</label>
+            <input ng-model="formdata.place" placeholder="请输入放置位置" required>
+        </div>
+        <div>
+            <label>放置节点*</label>
+            <select ng-model="formdata.isLeft" ng-init="formdata.isLeft='1'">
+                <option value="1">左边</option>
+                <option value="0">右边</option>
+            </select>
+        </div>
+        <div>
+            <label>手机*</label>
+            <input ng-model="formdata.mobile" placeholder="请输入手机" required>
+        </div>
+        <div>
+            <label>姓名*</label>
+            <input ng-model="formdata.name" placeholder="请输入姓名" required>
+        </div>
+        <div>
+            <label>身份证*</label>
+            <input ng-model="formdata.idcard" placeholder="请输入身份证" required>
+        </div>
+        <div>
+            <label>银行卡*</label>
+            <input ng-model="formdata.bankcard" placeholder="请输入银行卡" required>
+        </div>
+        <div>
+            <label>开户行</label>
+            <input ng-model="formdata.bankAddress" placeholder="请输入开户行">
+        </div>
+        <div>
+            <label>城市*</label>
+            <input ng-model="formdata.city" placeholder="请输入城市" required>
+        </div>
+        <div>
+            <label>微信</label>
+            <input ng-model="formdata.wechat" placeholder="请输入微信">
+        </div>
+        <div>
+            <label>支付宝</label>
+            <input ng-model="formdata.alipay" placeholder="请输入支付宝">
+        </div>
+        <div ng-model="admin_username" ng-if="admin_username == 'admin'">
+            <label>&nbsp;</label>
+            <button class="btn btn-default" ng-disabled="form.$invalid" type="submit">提交发布</button>
+            <span>*代表必填字段</span>
+        </div>
+    </form>
+</div>

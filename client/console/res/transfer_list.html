@@ -1,0 +1,27 @@
+<div ng-controller="transfer_list">
+    <table class="table table-hover" ng-click="onListItemClick($event)">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>转出账号</th>
+            <th>转入账号</th>
+            <th>信用分</th>
+            <th>转让时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="it in transferList">
+            <td>{{it.transferId}}</td>
+            <td>{{it.userAccount}}</td>
+            <td>{{it.receiverAccount}}</td>
+            <td>{{it.amount}}</td>
+            <td>{{it.createTime}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="position: relative;">
+        <ul class="pagination" style="margin: 0px; position: absolute; right: 40px;top: 0px;"></ul>
+    </div>
+
+</div>

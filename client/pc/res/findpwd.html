@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>找回密码</title>
+        <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style/style.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #CAD9CA
+            }
+
+            .app-body {
+                width: 1024px;
+                margin: auto;
+                position: relative;
+            }
+
+            .app-body > div:nth-child(1) > img {
+                width: 350px;
+                height: 300px;
+                position: absolute;
+                bottom: 0px;
+                right: 50px;
+            }
+
+            .app-box {
+                background-color: #ffffff;
+                box-shadow: 0px 0px 10px #aaaaaa;
+                width: 350px;
+                position: absolute;
+                bottom: 0px;
+                left: 50px;
+                padding: 30px;
+            }
+
+            .app-form {
+            }
+
+            .app-form > div {
+                margin-top: 24px;
+            }
+
+            .app-form input {
+                width: 100%;
+                height: 40px;
+                border: none;
+                border-bottom: solid 1px #dcdcdc;
+            }
+        </style>
+
+        <script src="libs/angular.min.js"></script>
+        <script src="libs/jquery-3.2.1.min.js"></script>
+        <script src="libs/jquery-md5.js"></script>
+        <script src="libs/juicer-min.js"></script>
+    </head>
+
+    <body ng-app="findpwdApp" ng-controller="findpwd">
+        <div class="app-body">
+            <div class="col-sm-6" style="height: 450px">
+                <img src="drawable/img_find_password.png">
+            </div>
+
+            <div class="col-sm-6" style="height: 450px">
+                <div class="app-box">
+                    <div style="position: relative;">
+                        <span style="font-size: 18px;">找回密码</span>
+                        <a href="signin.html" style="position: absolute; right: 0px;">登录</a>
+                    </div>
+                    <form class="app-form" name="form" class="form-horizontal" ng-submit="submitForm(form.$valid)" novalidate>
+                        <div>
+                            <input name="mobile" ng-model="formdata.mobile" ng-pattern="/^1[3578]{1}\d{9}\d?$/" placeholder="请输入手机号码" required>
+                        </div>
+
+                        <div>
+                            <input ng-model="formdata.code" ng-pattern="/^\d{6}$/" style="width: 200px;margin-right: 6px;" placeholder="请输入验证码" required>
+                            <button ng-click="sendcode(form.mobile.$valid)" ng-disabled="form.mobile.$invalid" class="btn btn-primary" style="width: 80px;">发送短信</button>
+                        </div>
+
+                        <div>
+                            <input ng-model="formdata.passwd" type="password" placeholder="设置新密码">
+                        </div>
+
+                        <div>
+                            <button type="submit" ng-disabled="form.$invalid" class="btn btn-success btn-block" style="height: 40px;margin-top: 28px;">完成</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script src="libs/__code__.js"></script>

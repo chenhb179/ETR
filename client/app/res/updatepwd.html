@@ -1,0 +1,130 @@
+<style>
+    .app-toolbar {
+        position: fixed;
+        top: 50px;
+        left: 0px;
+        right: 0px;
+        background-color: #4B99FF;
+        color: #ffffff;
+        padding: 0px 30px 0px 30px;
+        font-size: 14px;
+    }
+
+    .app-toolbar > div {
+        border: 1px solid #ffffff;
+        border-radius: 30px;
+        height: 30px;
+    }
+
+    .app-toolbar > div > div {
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    form {
+        position: fixed;
+        left: 30px;
+        right: 30px;
+        top: 120px;
+        background-color: #ffffff;
+        border: solid 1px #cccccc;
+        box-shadow: 1px 1px 5px #cccccc;
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    form > div {
+        margin-top: 14px;
+        color: gray;
+    }
+
+    input {
+        height: 40px;
+        border: none;
+        border-bottom: solid 1px #cccccc;
+        width: 100%;
+    }
+</style>
+
+<div ng-controller="updatepwd">
+    <div class="app-actionbar" style="background-color: #4B99FF;">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>安全管理</div>
+    </div>
+
+    <div class="app-toolbar">
+        <div ng-show="changePasswd">
+            <div ng-click="toggle(0)" class="col-xs-4" style="background-color: #ffffff;border-radius: 30px;color: #3A8FFF">登录密码</div>
+            <div ng-click="toggle(1)" class="col-xs-4">二次密码</div>
+            <div ng-click="toggle(2)" class="col-xs-4">手机号码</div>
+        </div>
+        <div ng-show="changeOperatePasswd">
+            <div ng-click="toggle(0)" class="col-xs-4">登录密码</div>
+            <div ng-click="toggle(1)" class="col-xs-4" style="background-color: #ffffff;border-radius: 30px;color: #3A8FFF">二次密码</div>
+            <div ng-click="toggle(2)" class="col-xs-4">手机号码</div>
+        </div>
+        <div ng-show="changeMobile">
+            <div ng-click="toggle(0)" class="col-xs-4">登录密码</div>
+            <div ng-click="toggle(1)" class="col-xs-4">二次密码</div>
+            <div ng-click="toggle(2)" class="col-xs-4" style="background-color: #ffffff;border-radius: 30px;color: #3A8FFF">手机号码</div>
+        </div>
+    </div>
+
+    <div>
+        <img src="drawable/bg_usercenter_top.png" style="width: 100%; height: 200px;">
+    </div>
+
+    <form name="form1" ng-submit="submitPasswd(form1.$valid)" ng-show="changePasswd" novalidate>
+        <div>
+            <div>原密码</div>
+            <input ng-model="formdata.oldpwd" placeholder="首次登录密码666666" required/>
+        </div>
+        <div>
+            <div>新密码</div>
+            <input ng-model="formdata.password" type="password" placeholder="输入新密码" required/>
+        </div>
+        <div>
+            <div>确认密码</div>
+            <input ng-model="formdata.password1" type="password" placeholder="输入确认密码" required/>
+        </div>
+        <div>
+            <button type="submit" ng-disabled="form1.$invalid" class="btn btn-primary btn-block">确定修改</button>
+        </div>
+    </form>
+
+    <form name="form2" ng-submit="submitOperatePasswd(form2.$valid)" ng-show="changeOperatePasswd" novalidate>
+        <div>
+            <div>原密码</div>
+            <input ng-model="formdata.oldpwd" placeholder="首次二级密码888888" required/>
+        </div>
+        <div>
+            <div>新密码</div>
+            <input ng-model="formdata.password" type="password" placeholder="输入新密码" required/>
+        </div>
+        <div>
+            <div>确认密码</div>
+            <input ng-model="formdata.password1" type="password" placeholder="输入确认密码" required/>
+        </div>
+        <div>
+            <button type="submit" ng-disabled="form2.$invalid" class="btn btn-primary btn-block">确定修改</button>
+        </div>
+    </form>
+
+    <form name="form3" class="form-horizontal" ng-submit="submitMobile(form3.$valid)" ng-show="changeMobile" novalidate>
+        <div>
+            <div>新手机号</div>
+            <input name="mobile" ng-model="formdata.mobile" placeholder="输入正确手机号码" ng-pattern="/^1[3578]{1}\d{9}\d?$/" required/>
+        </div>
+        <div>
+            <div>验证码</div>
+            <div style="position: relative;">
+                <input ng-model="formdata.code" style="width: 166px;" placeholder="输入6位数字验证码" ng-pattern="/^\d{6}$/" required/>
+                <button ng-click="sendcode(form3.mobile.$valid)" ng-disabled="form3.mobile.$invalid" class="btn btn-primary" style="width: 80px;height: 32px;position: absolute; right: 0px;">发送短信</button>
+            </div>
+        </div>
+        <div>
+            <button type="submit" ng-disabled="form3.$invalid" class="btn btn-primary btn-block">确定修改</button>
+        </div>
+    </form>
+</div>

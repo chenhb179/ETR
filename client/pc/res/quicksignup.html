@@ -1,0 +1,132 @@
+<style>
+    .app-panel {
+        width: 700px;
+        background-color: #ffffff;
+        margin: 40px 50px 40px 50px;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        text-align: center;
+        line-height: 40px;
+        background-color: #5864AE;
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+    .app-subtitle {
+        line-height: 30px;
+        text-align: center;
+        color: #ffffff;
+        background-color: #4D59A1;
+    }
+
+    .app-form {
+        width: 360px;
+        margin: auto;
+        padding: 30px 0px 30px 0px;
+    }
+
+    .app-form > div {
+        margin-top: 20px;
+    }
+
+    .app-form > div > div:nth-child(1) {
+        width: 60px;
+        display: inline-block;
+        text-align: right;
+        margin-right: 20px;
+    }
+
+    .app-form > div > div:nth-child(3) {
+        width: 10px;
+        text-align: right;
+        display: inline-block;
+    }
+
+    .app-form > div > input {
+        width: 250px;
+        height: 32px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+
+    .app-form > div > select {
+        width: 250px;
+        height: 32px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+</style>
+
+<div ng-controller="quicksignup" class="app-panel">
+    <div class="app-title">会员快速注册</div>
+    <div class="app-subtitle">友情提示: 带星号为必填信息，请输入准确信息</div>
+
+    <form class="app-form" name="form" class="form-horizontal" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <div>信用分</div>
+            <span>{{user.points}}</span>
+            <div>&nbsp;</div>
+        </div>
+        <div>
+            <div>币种选择</div>
+            <select ng-model="formdata.signupType" ng-init="formdata.signupType='1'" required>
+                <option value="1">信用分</option>
+                <!--<option value="2">复投币</option>-->
+            </select>
+            <div>*</div>
+        </div>
+        <div>
+            <div>用户名</div>
+            <input placeholder="填写用户名" ng-model="formdata.username" required/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>推荐人</div>
+            <input placeholder="填写推荐人" ng-model="formdata.inviterAccount" required/>
+            <div>*</div>
+        </div>
+        <div ng-show="formdata.signupType==='1'">
+            <div>手机号码</div>
+            <input placeholder="请输入有效手机号码" ng-model="formdata.mobile" ng-pattern="/^1[3578]{1}\d{9}\d?$/"/>
+            <div>*</div>
+        </div>
+		<div>
+            <div>验证码</div>
+            <input ng-model="formdata.code" ng-pattern="/^\d{6}$/" style="width:150px;" required/>
+			<button ng-click="sendcode(form.mobile.$valid)" ng-disabled="form.mobile.$invalid" class="btn btn-warning">发送验证码</button>
+            <div>*</div>
+        </div>
+        <div>
+            <div>放置位置</div>
+            <input placeholder="请输入放置位置" ng-model="formdata.parentAccount" required/>
+            <div>*</div>
+        </div>
+        <div>
+            <div>放置节点</div>
+            <select ng-model="formdata.isLeft" ng-init="formdata.isLeft='1'" required>
+                <option value="1">左边</option>
+                <option value="0">右边</option>
+            </select>
+            <div>*</div>
+        </div>
+        <div>
+            <div>会员等级</div>
+            <select ng-model="formdata.levelCard" ng-init="formdata.levelCard='1'" required>
+                <option value="1">普通卡</option>
+                <option value="2">金卡</option>
+                <option value="3">白金卡</option>
+                <!--<option value="4">钻石卡</option>-->
+                <!--<option value="5">黑钻卡</option>-->
+            </select>
+            <div>*</div>
+        </div>
+        <div>
+            <div>&nbsp;</div>
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-success">提交注册</button>
+        </div>
+    </form>
+</div>

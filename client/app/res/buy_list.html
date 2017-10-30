@@ -1,0 +1,105 @@
+<style>
+    .app-list-tab {
+        background-color: #ffffff;
+        line-height: 50px;
+        border-bottom: #dcdcdc;
+        position: fixed;
+        left: 0px;
+        top: 50px;
+        text-align: center;
+        right: 0px;
+        z-index: 100;
+    }
+
+    .app-list-tab > div {
+        display: inline-block;
+        border: 1px solid #3A8FFF;
+        background-color: #3A8FFF;
+        width: 130px;
+        line-height: 28px;
+        color: #ffffff;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .app-list {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background-color: #f0f0f0;
+        top: 100px;
+        overflow-y: auto;
+        padding-bottom: 8px;
+    }
+
+    .app-list > div {
+        padding: 8px 8px 0px 8px;
+    }
+
+    .app-list > div > div {
+        border-radius: 4px;
+        background-color: #ffffff;
+        border: 1px solid #eaeaea;
+        box-shadow: 1px 1px 5px #eaeaea;
+    }
+
+    .app-list > div > div:active {
+        background-color: #f1f1f1;
+    }
+</style>
+
+<div ng-controller="buy_list">
+
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>充值记录</div>
+    </div>
+
+    <div ng-click="tab()" ng-show="isFinish" class="app-list-tab">
+        <div style="background-color: #ffffff; color: #3A8FFF;right: -20px;z-index: 10">未完成</div>
+        <div style="left: -20px;z-index: 100">已完成</div>
+    </div>
+    <div ng-click="tab()" ng-show="!isFinish" class="app-list-tab">
+        <div style="right: -20px;z-index: 100">未完成</div>
+        <div style="background-color: #ffffff; color: #3A8FFF; left: -20px;z-index: 10">已完成</div>
+    </div>
+
+    <div class="app-list">
+        <div ng-repeat="it in listdata.finishOrderList">
+            <div>
+                <div style="line-height: 48px;padding: 0px 14px 0px 14px;">
+                    <img src="drawable/icon_credit_score_buy.png" style="width: 18px;margin-right: 8px;">
+                    <span>信用分买入记录</span>
+                </div>
+                <div style="height: 1px; background-color: #eeeeee;">&nbsp;</div>
+                <div style="line-height: 40px;height: 40px;font-size: 12px;">
+                    <div class="col-xs-4" style="color: gray; text-align: left">信用分:{{it.pointAmount}}</div>
+                    <div class="col-xs-4" style="color: dodgerblue; text-align: center;">已完成</div>
+                    <div class="col-xs-4" style="color: gray;text-align: right">
+                        <div style="line-height: 14px; padding-top: 6px;">{{it.createTime}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="it in listdata.notFinishOrderList">
+            <div>
+                <div style="line-height: 48px;padding: 0px 14px 0px 14px;">
+                    <img src="drawable/icon_credit_score_buy.png" style="width: 18px;margin-right: 8px;">
+                    <span>信用分买入记录</span>
+                </div>
+                <div style="height: 1px; background-color: #eeeeee;">&nbsp;</div>
+                <div style="line-height: 40px;height: 40px;font-size: 12px;">
+                    <div class="col-xs-4" style="color: gray; text-align: left">信用分:{{it.pointAmount}}</div>
+                    <div class="col-xs-4" style="color: green; text-align: center;">待确认收款</div>
+                    <div class="col-xs-4" style="color: gray;text-align: right">
+                        <div style="line-height: 14px; padding-top: 6px;">{{it.createTime}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

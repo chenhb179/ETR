@@ -1,0 +1,72 @@
+<style>
+
+    .app-body {
+        background-color: #f1f1f1;
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        padding-top: 14px;
+        top: 50px;
+        bottom: 0px;
+    }
+
+    form {
+        padding: 14px;
+        background-color: #ffffff;
+    }
+
+    form > div {
+        border-bottom: 1px solid #e1e1e1;
+        line-height: 40px;
+        margin-top: 14px;
+        height: 44px;
+    }
+
+    form input {
+        border: none;
+        width: 100%;
+        height: 40px;
+    }
+
+    form textarea {
+        width: 100%;
+        height: 100px;
+        border: none;
+    }
+</style>
+
+<div ng-controller="feedback">
+
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>留言反馈</div>
+    </div>
+
+    <div class="app-body">
+        <form name="form" novalidate>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">标题</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <input placeholder="填写标题" ng-model="formdata.title" required/>
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-3" style="padding: 0px;">联系方式</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <input placeholder="请留下您的联系方式" ng-model="formdata.contact" required/>
+                </div>
+            </div>
+            <div style="border: none; height: 100px;">
+                <div class="col-xs-3" style="padding: 0px;">留言内容</div>
+                <div class="col-xs-9" style="padding: 0px;">
+                    <textarea placeholder="请输入反馈内容" ng-model="formdata.content" required></textarea>
+                </div>
+            </div>
+        </form>
+
+        <div style="padding: 14px;">
+            <button ng-click="submitForm(form.$valid)" ng-disabled="form.$invalid" class="btn btn-primary btn-block">提交</button>
+        </div>
+    </div>
+
+</div>

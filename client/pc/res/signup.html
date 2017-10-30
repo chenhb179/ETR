@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>注册会员</title>
+        <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style/style.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: #6DC497;
+            }
+            .app-body {
+                width: 1024px;
+                margin: auto;
+                position: relative;
+            }
+
+            .app-body > div {
+                height: 450px;
+            }
+
+            .app-body > div:nth-child(1) > img {
+                width: 350px;
+                height: 300px;
+                position: absolute;
+                bottom: 0px;
+                right: 50px;
+            }
+
+            .app-box {
+                background-color: #ffffff;
+                box-shadow: 0px 0px 10px #aaaaaa;
+                width: 350px;
+                position: absolute;
+                bottom: 0px;
+                left: 50px;
+                padding: 30px;
+            }
+
+            .app-title {
+                position: relative;
+            }
+
+            .app-title > span {
+                font-size: 18px;
+            }
+
+            .app-title > a {
+                position: absolute;
+                right: 0px;
+            }
+
+            .app-form {
+            }
+
+            .app-form > div {
+                margin-top: 20px;
+            }
+
+            .app-form input {
+                width: 100%;
+                height: 40px;
+                border: none;
+                border-bottom: solid 1px #dcdcdc;
+            }
+        </style>
+
+        <script src="libs/jquery-3.2.1.min.js"></script>
+        <script src="libs/jquery-md5.js"></script>
+        <script src="../src/netsky-common.js"></script>
+        <script src="../src/netsky-config.js"></script>
+    </head>
+
+    <body>
+        <div class="app-body">
+            <div class="col-sm-6">
+                <img src="drawable/img_register_pic.png">
+            </div>
+            <div class="col-sm-6">
+                <div class="app-box">
+                    <div class="app-title">
+                        <span>注册会员</span>
+                        <a href="signin.html">登录</a>
+                    </div>
+                    <div class="app-form">
+                        <div>
+                            <input id="username" type="text" placeholder="设置用户名">
+                        </div>
+                        <div>
+                            <input id="mobile" type="number" placeholder="请输入手机号码">
+                        </div>
+                        <div>
+                            <input id="code" style="width: 200px;margin-right: 6px;" placeholder="请输入验证码">
+                            <button class="btn btn-info" style="width: 80px">发送短信</button>
+                        </div>
+                        <div>
+                            <span>备注: 默认登录密码666666, 二级密码888888</span>
+                        </div>
+                        <div id="errormsg" style="color: red;text-align: center;">&nbsp;</div>
+                        <div>
+                            <button id="signup" class="btn btn-success btn-block">完成</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    $("#signup").bind("click", function()
+    {
+        $('#errormsg').html("");
+
+        var param = {
+            username: $('#username').val(),
+            mobile: $('#mobile').val(),
+            code: $('#code').val(),
+        };
+
+        if(param.username == "" || param.username.length < 4)
+        {
+            $('#errormsg').html("请输入用户名");
+            return;
+        }
+        if(param.mobile == "" || !new RegExp("^1[3578]{1}\\d{9}\\d?$").test(param.mobile))
+        {
+            $('#errormsg').html("请输入正确手机号码");
+            return;
+        }
+        if(param.code == "" || param.code.length != 6)
+        {
+            $('#errormsg').html("请输入正确验证码");
+            return;
+        }
+
+        var cfg = {
+            mask: true,
+            care: true
+        };
+        T.common.ajax.request(Api.user_signup_v1, param, cfg, function(data, code, msg)
+        {
+            switch(code)
+            {
+                case 200:
+                {
+                    alert("注册成功");
+                    location = "signin.html";
+                    break;
+                }
+                default:
+                {
+                    $('#errormsg').html(msg);
+                    break;
+                }
+            }
+        });
+    })
+</script>

@@ -1,0 +1,34 @@
+<style>
+    .app-panel {
+        width: 700px;
+        background-color: #ffffff;
+        margin: 40px 50px 40px 50px;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        line-height: 40px;
+        background-color: #5864AE;
+        padding-left: 14px;
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+    .app-subtitle {
+        line-height: 40px;
+        background-color: #5864AE;
+        font-size: 14px;
+        padding-left: 14px;
+        color: #ffffff;
+    }
+
+    .app-content {
+        padding: 14px;
+    }
+</style>
+
+<div ng-controller="notice_info" class="app-panel">
+    <div class="app-title">{{notice.title}}</div>
+    <div class="app-subtitle">{{notice.type}}&nbsp;{{notice.createTime}}</div>
+    <div class="app-content">{{notice.content}}</div>
+</div>

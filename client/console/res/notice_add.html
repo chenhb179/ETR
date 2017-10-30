@@ -1,0 +1,26 @@
+<style>
+</style>
+
+<div ng-controller="notice_add">
+    <form name="form" class="app-form" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <label>公告标题*</label>
+            <input ng-model="formdata.title" placeholder="请输入公告标题" required>
+        </div>
+        <div>
+            <label>公告类型*</label>
+            <input ng-model="formdata.type" placeholder="请输入公告类型" required>
+        </div>
+        <div>
+            <label style="vertical-align: top;">公告内容*</label>
+			<script id="editor" type="text/plain" nf-model="formdata.content" style="width:60%;height:400px;"></script>
+            <!--<textarea ng-model="formdata.content" placeholder="请输入公告内容" required></textarea>-->
+			
+        </div>
+        <div ng-model="admin_username" ng-if="admin_username == 'admin'">
+            <!--<label>&nbsp;</label>-->
+            <button class="btn btn-success" ng-disabled="form.$invalid" type="submit">提交发布</button>
+            <span>*代表必填字段</span>
+        </div>
+    </form>
+</div>

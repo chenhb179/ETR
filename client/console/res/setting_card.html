@@ -1,0 +1,44 @@
+<style>
+    .app-form input {
+        width: 100px;
+        height: 24px;
+    }
+
+    .app-form label {
+        width: 50px;
+    }
+</style>
+
+<div ng-controller="setting">
+    <form name="form" class="app-form" ng-submit="submitForm(form.$valid)" novalidate>
+        <div>
+            <div>会员卡设置</div>
+            <div style="margin-top: 14px;" class="clearfix">
+                <div class="col-xs-4">
+                    <label>普卡: </label>
+                    <input type="number" ng-model="setting.HuiYuan.PuKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>金卡: </label>
+                    <input type="number" ng-model="setting.HuiYuan.JinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>白金卡: </label>
+                    <input type="number" ng-model="setting.HuiYuan.BaiJinKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>钻石卡: </label>
+                    <input type="number" ng-model="setting.HuiYuan.ZuanShiKa" required>
+                </div>
+                <div class="col-xs-4">
+                    <label>黑钻卡: </label>
+                    <input type="number" ng-model="setting.HuiYuan.HeiZuanKa" required>
+                </div>
+            </div>
+        </div>
+
+        <div ng-model="admin_username" ng-if="admin_username == 'admin'">
+            <button class="btn btn-default" ng-disabled="form.$invalid" type="submit">保存设置</button>
+        </div>
+    </form>
+</div>

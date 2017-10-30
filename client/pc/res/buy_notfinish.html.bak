@@ -1,0 +1,50 @@
+<style>
+    th {
+        background-color: #5864AE;
+        color: #ffffff;
+    }
+
+    .app-body {
+        margin: 20px 30px 20px 30px;
+        width: 980px;
+    }
+
+    .app-panel {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        line-height: 40px;
+        font-size: 18px;
+    }
+</style>
+
+<div ng-controller="buy_notfinish" class="app-body">
+    <div class="app-title">未完成买入列表</div>
+    <div class="app-panel">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>出售账号</th>
+                <th>信用积分</th>
+                <th>时间</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="it in listdata.orderList">
+                <td>{{it.orderId}}</td>
+                <td>{{it.username}}</td>
+                <td>{{it.pointAmount}}</td>
+                <td>{{it.createTime}}</td>
+                <td>待确认收款</td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <ul class="pagination" style="margin: 0px 0px 14px 14px;"></ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<style>
+    .app-dialog {
+    }
+
+    .app-dialog > div {
+        text-align: center;
+    }
+
+    .app-dialog input {
+        width: 250px;
+        height: 32px;
+        background-color: #eeeeee;
+        padding: 0px 8px 0px 8px;
+        border: none;
+    }
+
+    .app-dialog > div:nth-child(1) {
+        line-height: 40px;
+        background-color: #5864AE;
+        color: #ffffff;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .app-dialog > div:nth-child(2) {
+        line-height: 80px;
+    }
+
+    .app-dialog > div:nth-child(3) {
+        line-height: 60px;
+        background-color: #ffffff;
+    }
+</style>
+
+<div class="app-dialog">
+    <div class="app-dialog-title">确认</div>
+    <div>
+        <span>二级密码</span>
+        <input ng-model="passwd" type="password">
+    </div>
+    <div>
+        <button class="btn btn-default" ng-click="cancel()" style="margin-right: 14px;">取消</button>
+        <button class="btn btn-success" ng-click="ok()">完成</button>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>登录</title>
+        <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style/style.css" rel="stylesheet">
+        <style>
+            .app-title {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                right: 0px;
+                bottom: 100px;
+            }
+
+            .app-title > div > div {
+                color: #4D59A1;
+                font-size: 32px;
+                font-weight: bold;
+                padding-top: 50px;
+            }
+
+            .app-body {
+                position: absolute;
+                left: 0px;
+                top: 100px;
+                right: 0px;
+                bottom: 100px;
+                background-color: #4D59A1;
+            }
+
+            .app-img {
+                width: 450px;
+                margin: auto;
+                margin-top: 50px;
+            }
+
+            .app-img > img {
+                width: 100%
+            }
+
+            .app-box {
+                width: 350px;
+                margin: auto;
+                background-color: #ffffff;
+                padding: 30px;
+                margin-top: 80px;
+            }
+
+            .app-form {
+            }
+
+            .app-form > div {
+                border: solid #dcdcdc 1px;
+                margin-top: 20px;
+            }
+
+            .app-form img {
+                width: 40px;
+                height: 40px;
+                background-color: #dcdcdc;
+            }
+
+            .app-form input {
+                border: none;
+                padding: 6px;
+            }
+        </style>
+
+        <script src="libs/angular.min.js"></script>
+        <script src="libs/jquery-3.2.1.min.js"></script>
+        <script src="libs/jquery-md5.js"></script>
+        <script src="libs/juicer-min.js"></script>
+    </head>
+
+    <body ng-app="signinApp" ng-controller="signin">
+        <div class="app-title">
+            <div class="container">
+                <div>ETR国际信用社区</div>
+            </div>
+        </div>
+        <div class="app-body">
+            <div class="container">
+                <div class="col-sm-6">
+                    <div class="app-img">
+                        <img src="drawable/img_login_city.png">
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="app-box">
+                        <div style="font-size: 18px;">账号登录</div>
+
+                        <form class="app-form" name="form" class="form-horizontal" ng-submit="submitForm(form.$valid)" novalidate>
+                            <div>
+                                <img src="drawable/icon_login_username.png"/>
+                                <input ng-model="formdata.username" placeholder="账号" required>
+                            </div>
+
+                            <div>
+                                <img src="drawable/icon_login_password.png"/>
+                                <input ng-model="formdata.passwd" type="password" placeholder="密码" required>
+                            </div>
+                            <div style="border: none;margin-top: 28px;">
+                                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary btn-block" style="height: 40px;">登录</button>
+                            </div>
+                        </form>
+
+                        <div style="position: relative;padding-top: 14px;">
+                            <a href="findpwd.html">忘记密码</a>
+                            <!--<a href="signup.html" style="position: absolute; right: 0px;">注册会员</a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script src="libs/__code__.js"></script>

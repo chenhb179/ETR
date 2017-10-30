@@ -1,0 +1,90 @@
+<style>
+    .app-panel {
+        width: 900px;
+        margin: 30px 50px 30px 50px;
+    }
+
+    .app-upgrade {
+        padding: 14px;
+        background-color: #ffffff;
+        margin-bottom: 28px;
+    }
+
+    .app-upgrade > div {
+        line-height: 20px;
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    .app-upgrade > div > div {
+        display: inline-block;
+    }
+
+    .app-upgrade > div > button {
+        right: 0px;
+        position: absolute;
+    }
+
+    .app-upgrade img {
+        width: 100%;
+        margin-bottom: 14px;
+    }
+</style>
+
+<div ng-controller="upgrade" class="app-panel">
+    <div class="col-sm-3">
+        <div class="app-upgrade">
+            <div>
+                <div>普通卡</div>
+                <button ng-show="user.level!==1" class="btn btn-xs btn-danger" ng-click="upgradeCard(1)">升级</button>
+                <button ng-show="user.level===1" class="btn btn-xs btn-primary" ng-click="reActive()">重新激活</button>
+            </div>
+            <img src="drawable/img_upgrade_vip1.jpg"/>
+            <div>价格: {{cards.PuKa}}信用分</div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="app-upgrade">
+            <div>
+                <div>金卡</div>
+                <button ng-show="user.level!==2" class="btn btn-xs btn-danger" ng-click="upgradeCard(2)">升级</button>
+                <button ng-show="user.level===2" class="btn btn-xs btn-primary" ng-click="reActive()">重新激活</button>
+            </div>
+            <img src="drawable/img_upgrade_vip2.jpg"/>
+            <div>价格: {{cards.JinKa}}信用分</div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="app-upgrade">
+            <div>
+                <div>白金卡</div>
+                <button ng-show="user.level!==3" class="btn btn-xs btn-danger" ng-click="upgradeCard(3)">升级</button>
+                <button ng-show="user.level===3" class="btn btn-xs btn-primary" ng-click="reActive()">重新激活</button>
+            </div>
+            <img src="drawable/img_upgrade_vip3.jpg"/>
+            <div>价格: {{cards.BaiJinKa}}信用分</div>
+        </div>
+    </div>
+    <div class="col-sm-3" style="display: none">
+        <div class="app-upgrade">
+            <div>
+                <div>钻石卡</div>
+                <button ng-show="user.level!==4" class="btn btn-xs btn-danger" ng-click="upgradeCard(4)">升级</button>
+                <button ng-show="user.level===4" class="btn btn-xs btn-primary" ng-click="reActive()">重新激活</button>
+            </div>
+            <img src="drawable/img_upgrade_vip4.jpg"/>
+            <div>价格: {{cards.ZuanShiKa}}信用分</div>
+        </div>
+    </div>
+    <div class="col-sm-3" style="display: none;">
+        <div class="app-upgrade">
+            <div>
+                <div>黑钻卡</div>
+                <button ng-show="user.level!==5" class="btn btn-xs btn-danger" ng-click="upgradeCard(5)">升级</button>
+                <button ng-show="user.level===5" class="btn btn-xs btn-primary" ng-click="reActive()">重新激活</button>
+            </div>
+            <img src="drawable/img_upgrade_vip5.jpg"/>
+            <div>价格: {{cards.HeiZuanKa}}信用分</div>
+        </div>
+    </div>
+</div>

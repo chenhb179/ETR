@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ETR国际信用社区后台</title>
+
+        <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="libs/jquery.jorgchart/jquery.jOrgChart.css" rel="stylesheet">
+        <link href="style/style.css" rel="stylesheet">
+
+        <style>
+            .main-actionbar {
+                position: absolute;
+                left: 0px;
+                right: 0px;
+                top: 0px;
+                height: 60px;
+                line-height: 60px;
+                border-bottom: solid 1px #dddddd;
+                padding-left: 14px;
+            }
+
+            .main-actionbar > div {
+                display: inline-block;
+            }
+
+            .main-menu {
+                position: fixed;
+                left: 0px;
+                top: 60px;
+                bottom: 0px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                width: 250px;
+                border-right: solid 1px #dddddd;
+            }
+
+            .main-menu a {
+                display: block;
+                width: 250px;
+                height: 40px;
+                line-height: 40px;
+                padding-left: 42px;
+                border-bottom: solid 1px #eeeeee;
+                position: relative;
+                color: #304E87;
+            }
+
+            .main-menu i {
+                position: absolute;
+                right: 14px;
+                line-height: 40px;
+            }
+
+            .main-menu a:hover {
+                background-color: #f1f1f1;
+            }
+
+            .main-view {
+                position: fixed;
+                left: 250px;
+                right: 0px;
+                top: 60px;
+                bottom: 0px;
+                padding: 0px;
+                overflow-y: auto;
+                /*overflow-x: hidden;*/
+                background-color: #ffffff;
+            }
+
+            ::-webkit-scrollbar {width: 5px;height:6px;}
+            ::-webkit-scrollbar-track-piece{background-color: #eeeeee;margin: -2px;}
+            ::-webkit-scrollbar-thumb{background: #aaaaaa;min-height: 150px;min-width: 150px;border-radius: 10px;}
+            ::-webkit-scrollbar-thumb:vertical:hover{background: #555555}
+            ::-webkit-scrollbar-thumb:horizontal:hover{background: #555555}
+        </style>
+
+        <script src="libs/angular.min.js"></script>
+        <script src="libs/angular-route.js"></script>
+        <script src="libs/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+        <script src="libs/jquery-3.2.1.min.js"></script>
+        <script src="libs/jquery-md5.js"></script>
+        <script src="libs/jquery.jorgchart/jquery.jOrgChart.js"></script>
+        <script src="libs/juicer-min.js"></script>
+		<!--bootstrap-->
+        <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+		<script src="libs/bootstrap-paginator.min.js"></script>
+		<!--图标-->
+		<script src="libs/date.js"></script>
+        <script src="libs/Chart.js"></script>
+		<!--导出excel-->
+		<script src="libs/excel/xlsx.core.min.js"></script>
+        <script src="libs/excel/alasql.min.js"></script>
+		<!--百度编辑器ueditor-->
+		<script type="text/javascript" charset="utf-8" src="libs/ueditor/ueditor.config.js"></script>
+		<script type="text/javascript" charset="utf-8" src="libs/ueditor/ueditor.all.min.js"> </script>
+		<script type="text/javascript" charset="utf-8" src="libs/ueditor/lang/zh-cn/zh-cn.js"></script>
+    </head>
+
+    <body>
+        <!--ActionBar-->
+        <div class="main-actionbar">
+            <div style="font-size: 24px;">信用社区管理后台</div>
+            <div style="color: red;" id="pointSum">全平台信用分: </div>
+            <div class="dropdown" style="position: absolute; right: 80px;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i>
+                    <span id="username">管理员: </span>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <!--<li>-->
+                        <!--<a href="#">修改密码</a>-->
+                    <!--</li>-->
+                    <!--<li class="divider"></li>-->
+                    <li>
+                        <a id="signout" href="javascript:void(0)">注销</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--Menu-->
+        <div class="main-menu">
+            <div>
+                <a data-toggle="collapse" href="#collapse1" style="padding-left: 14px;">
+                    <span>会员管理</span>
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div id="collapse1" class="collapse in">
+                    <a href="#/user_list">
+                        <span>全部会员</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/user_list_inactive">
+                        <span>待激活会员</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/user_add">
+                        <span>添加会员</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/user_relation">
+                        <span>会员关系图</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+                <a data-toggle="collapse" href="#jifenguanli" style="padding-left: 14px;">
+                    <span>积分管理</span>
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div id="jifenguanli" class="collapse">
+                    <a href="#/transfer_list">
+                        <span>积分转让记录</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/change_list">
+                        <span>积分操作记录</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+                <a data-toggle="collapse" href="#collapse2" style="padding-left: 14px;">
+                    <span>交易管理</span>
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div id="collapse2" class="collapse">
+                    <a href="#/order_sale_new">
+                        <span>新提现交易订单</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+					<a href="#/order_buy_sale">
+                        <span>新充值交易订单</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+					<a href="#/order_sale_all">
+                        <span>全部提现订单</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+					<a href="#/order_buy_all">
+                        <span>全部充值订单</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+					 <a href="#/order_sale_finish">
+                        <span>已完成提现明细</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <!--<a href="#/order_sale_notfinish">
+                        <span>未完成提现交易</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/order_buy_notfinish">
+                        <span>未完成买交易</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/order_buy_finish">
+                        <span>已完成买入交易</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>-->
+                </div>
+
+                <a data-toggle="collapse" href="#collapse3" style="padding-left: 14px;">
+                    <span>文章管理</span>
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div id="collapse3" class="collapse">
+                    <a href="#/notice_list">
+                        <span>新闻公告</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/notice_add">
+                        <span>添加公告</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+                <a data-toggle="collapse" href="#collapse4" style="padding-left: 14px;">
+                    <span>留言管理</span>
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div id="collapse4" class="collapse">
+                    <a href="#/feedback_list?deal=0">
+                        <span>未处理留言</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/feedback_list?deal=1">
+                        <span>已处理留言</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+                <a data-toggle="collapse" href="#collapse5" style="padding-left: 14px;">
+                    <span>平台设置</span>
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div id="collapse5" class="collapse">
+                    <a href="#/setting_reward?userId=0">
+                        <span>奖励设置</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/setting_card?userId=0">
+                        <span>会员卡设置</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/setting_fee?userId=0">
+                        <span>手续费设置</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/setting_site?userId=0">
+                        <span>网站维护设置</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+                <a data-toggle="collapse" href="#collapse6" style="padding-left: 14px;">
+                    <span>系统日志</span>
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div id="collapse6" class="collapse">
+                    <a href="#/log_list?type=adminsignin">
+                        <span>管理员登录日志</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#">
+                        <span>平台设置操作日志</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/log_list?type=signin">
+                        <span>会员登录日志</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#">
+                        <span>会员操作日志</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/log_list?type=transfer">
+                        <span>会员积分转让日志</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/log_list?type=updatepwd">
+                        <span>会员密码重置记录</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#">
+                        <span>短信记录</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/log_list?type=checkcode">
+                        <span>验证码记录</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+				<a data-toggle="collapse" href="#collapse7" style="padding-left: 14px;">
+                    <span>数据统计</span>
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div id="collapse7" class="collapse">
+					<a href="#/data_daily_withdrawals">
+                        <span>每日提现数据走势图</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <a href="#/data_daily_static">
+                        <span>每日静态奖励走势图</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+					<a href="#/data_daily_dymanic">
+                        <span>每日动态奖励走势图</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+					<a href="#/data_daily_show">
+                        <span>每日分享奖励走势图</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+					<a href="#/data_daily_team">
+                        <span>每日团队津贴走势图</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+					<a href="#/data_daily_balance">
+                        <span>每日平衡奖励走势图</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+					<a href="#/data_daily_manage">
+                        <span>每日管理津贴走势图</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+					<a href="#/data_daily_register">
+                        <span>每日新生会员走势图</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--View-->
+        <div ng-app="app" ng-controller="main" class="main-view" ng-view></div>
+    </body>
+</html>
+
+<script src="libs/__code__.js"></script>

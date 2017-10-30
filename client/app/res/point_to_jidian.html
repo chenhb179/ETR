@@ -1,0 +1,49 @@
+<style>
+    .app-form {
+        width: 80%;
+        margin: auto;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        box-shadow: 1px 1px 10px #cccccc;
+        margin-top: -60px;
+        padding: 20px 28px 20px 28px;
+        color: #999999;
+    }
+
+    .app-form input {
+        border: none;
+        border-bottom: 1px solid #dcdcdc;
+        height: 30px;
+        margin-bottom: 14px;
+        width: 100%;
+    }
+</style>
+
+<div ng-controller="point_to_jidian">
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+    </div>
+    <div>
+        <div style="background-color: #3A8FFF; text-align: center; padding-top: 50px;color: #ffffff;">
+            <img src="drawable/icon_credit_to_point.png" style="width: 90px;">
+            <div style="font-size: 14px;">信用分转绩点</div>
+            <div style="height: 1px; background-color: #ffffff; margin: 14px;">&nbsp;</div>
+            <div style="text-align: left;padding: 0px 0px 70px 42px;">当前信用分:{{points}}</div>
+        </div>
+
+        <form class="app-form" name="form" ng-submit="submitForm(form.$valid)" novalidate>
+            <div>
+                <div>转出积分</div>
+                <input ng-model="formdata.points" ng-pattern="/^\d*$/" placeholder="输入数量" required/>
+            </div>
+            <div>
+                <div>二级密码</div>
+                <input ng-model="formdata.operatePasswd1" placeholder="输入二级密码" type="password" required/>
+            </div>
+            <div>
+                <button class="btn btn-primary btn-block" type="submit" ng-disabled="form.$invalid">确认转出</button>
+            </div>
+        </form>
+    </div>
+</div>

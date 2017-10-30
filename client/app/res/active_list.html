@@ -1,0 +1,46 @@
+<style>
+    .app-list {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background-color: #f0f0f0;
+        top: 50px;
+        overflow-y: auto;
+        padding-bottom: 8px;
+    }
+
+    .app-list > div {
+        padding: 8px 8px 0px 8px;
+    }
+
+    .app-list > div > div {
+        border-radius: 4px;
+        background-color: #ffffff;
+        border: 1px solid #eaeaea;
+        height: 80px;
+        box-shadow: 1px 1px 5px #eaeaea;
+        position: relative;
+    }
+</style>
+
+<div ng-controller="active_list">
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>直推会员</div>
+    </div>
+
+    <div class="app-list">
+        <div ng-repeat="it in listdata.userList">
+            <div>
+                <div style="position: absolute; left: 0px; top: 0px; width: 80px; height: 100%;padding: 14px;">
+                    <img src="drawable/icon_user_default.png" style="width: 100%">
+                </div>
+                <div style="position: absolute;left: 80px; top: 0px; right: 0px; height: 100%; padding: 14px 14px 14px 0px;line-height: 26px;">
+                    <div>{{it.name}}</div>
+                    <div>{{it.mobile}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

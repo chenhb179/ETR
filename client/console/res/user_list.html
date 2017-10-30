@@ -1,0 +1,40 @@
+<div ng-controller="user_list">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>账号</th>
+			<th>推荐人ID</th>
+            <th>手机</th>
+            <th>信用分</th>
+            <!--<th>绩点</th>-->
+            <th>复投币</th>
+            <th>购物积分</th>
+            <th>注册时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody ng-model="admin_username">
+        <tr ng-repeat="it in listdata.userList">
+            <td>{{it.username}}</td>
+			<td ng-click="showInviter(it.inviter)">{{it.inviter}}</td>
+            <td>{{it.mobile}}</td>
+            <td>{{it.points}}</td>
+            <!--<td>{{it.jidian}}</td>-->
+            <td>{{it.reinvestPoints}}</td>
+            <td>{{it.shopPoints}}</td>
+            <td>{{it.createTime}}</td>
+            <td ng-if="admin_username == 'admin'">
+                <button ng-click="onListItemClick($event, $index)" class="btn btn-success btn-xs">奖励设置</button>
+                <button ng-click="onListItemClick($event, $index)" class="btn btn-default btn-xs">直推人数</button>
+                <button ng-click="onListItemClick($event, $index)" class="btn btn-danger btn-xs">删除</button>
+                <button ng-click="onListItemClick($event, $index)" class="btn btn-danger btn-xs">修改</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="position: relative;">
+        <ul class="pagination" style="margin: 0px; position: absolute; right: 40px;top: 0px;"></ul>
+    </div>
+
+</div>

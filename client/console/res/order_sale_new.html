@@ -1,0 +1,54 @@
+<div ng-controller="order_sale_new">
+	<div style="position: relative;">
+        <button class="btn btn-success" ng-click="exportExcelForPage()" style="margin: 10px;">导出本页</button>
+		<button class="btn btn-success" ng-click="exportExcelForAll()" style="margin: 0px;">导出全部</button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>出售账号</th>
+			<th>姓名</th>
+            <th>手机号</th>
+			<th>银行卡</th>
+            <th>开户行</th>
+            <th>出售信用分</th>
+			<th>人民币</th>
+            <th>手续费</th>
+            <th>出售时间</th>
+            <!--<th>撤销时间</th>
+            <th>购买时间</th>-->
+            <th>确认时间</th>
+            <!--<th>交易状态</th>-->
+			<th>操作</th>
+        </tr>
+        </thead>
+        <tbody ng-model="admin_username">
+        <tr ng-repeat="it in orderList">
+            <td>{{it.orderId}}</td>
+			<td ng-click="showSaler($index)">{{it.username}}</td>
+			<td>{{it.name}}</td>
+			<td>{{it.mobile}}</td>
+            <td>{{it.bankcard}}</td>
+            <td>{{it.bankAddress}}</td>
+            <td>{{it.pointAmount}}</td>
+			<td>{{it.pointAmount*7}}</td>
+            <td>{{it.fee}}</td>
+            <td>{{it.createTime}}</td>
+            <!--<td>{{it.cancelTime}}</td>
+            <td>{{it.buyTime}}</td>-->
+            <td>{{it.confirmTime}}</td>
+            <!--<td>{{it.status}}</td>-->
+			<td ng-if="admin_username == 'admin'">
+                <button ng-click="onListItemClick($event, $index)" class="btn btn-danger btn-xs">回收</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+	
+    <div style="position: relative;">
+        <ul class="pagination" style="margin: 0px; position: absolute; right: 40px;top: 0px;"></ul>
+    </div>
+
+</div>

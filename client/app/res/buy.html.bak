@@ -1,0 +1,53 @@
+<style>
+    .app-list {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background-color: #f0f0f0;
+        top: 50px;
+        overflow-y: auto;
+        padding-bottom: 8px;
+    }
+
+    .app-list > div {
+        padding: 8px 8px 0px 8px;
+    }
+
+    .app-list > div > div {
+        border-radius: 4px;
+        background-color: #ffffff;
+        border: 1px solid #eaeaea;
+        box-shadow: 1px 1px 5px #eaeaea;
+    }
+
+    .app-list > div > div:active {
+        background-color: #f1f1f1;
+    }
+</style>
+
+<div ng-controller="buy">
+
+    <div class="app-actionbar">
+        <img ng-click="back()" src="drawable/btn_com_back.png">
+        <div>积分买入</div>
+    </div>
+
+    <div class="app-list">
+        <div ng-repeat="it in listdata.orderList">
+            <div>
+                <div style="line-height: 48px;padding: 0px 14px 0px 14px;position: relative;">
+                    <img src="drawable/icon_credit_score_buy.png" style="width: 18px;margin-right: 8px;">
+                    <span>信用分{{it.pointAmount}}</span>
+                    <button index="{{$index}}" class="btn btn-primary btn-xs" style="border-radius: 20px;position: absolute; right: 14px;top: 14px; width: 60px;" ng-click="buy($index)">买入</button>
+                </div>
+                <div style="height: 1px; background-color: #eeeeee;">&nbsp;</div>
+                <div style="line-height: 40px;height: 40px;font-size: 12px;">
+                    <div class="col-xs-6" style="color: dodgerblue; text-align: left;" ng-click="showSaler($index)">{{it.username}}</div>
+                    <div class="col-xs-6" style="color: gray;text-align: right">{{it.createTime}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

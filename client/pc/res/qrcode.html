@@ -1,0 +1,23 @@
+<style>
+    .app-panel {
+        width: 500px;
+        background-color: #ffffff;
+        margin: 40px 50px 40px 50px;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        text-align: center;
+        line-height: 40px;
+        background-color: #5864AE;
+        font-size: 18px;
+        color: #ffffff;
+    }
+</style>
+
+<div ng-controller="qrcode" class="app-panel">
+    <div class="app-title">我的推广二维码</div>
+    <div style="background-color: #ffffff; padding: 28px 0px 28px 0px;text-align: center;">
+        <div id="qrcode" style="width: 150px; height: 150px; margin: auto;"></div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<style>
+    th {
+        background-color: #5864AE;
+        color: #ffffff;
+    }
+
+    .app-body {
+        margin: 20px 30px 20px 30px;
+        width: 980px;
+    }
+
+    .app-panel {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 5px #aaaaaa;
+    }
+
+    .app-title {
+        line-height: 40px;
+        font-size: 18px;
+    }
+</style>
+
+<div ng-controller="notice" class="app-body">
+    <div class="app-title">最新公告</div>
+    <div class="app-panel">
+        <table class="table table-hover" ng-click="onListItemClick($event)">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>标题</th>
+                <th>公告类型</th>
+                <th>时间</th>
+                <th>查看详情</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="it in listdata.noticeList">
+                <td>{{it.noticeId}}</td>
+                <td>{{it.title}}</td>
+                <td>{{it.type}}</td>
+                <td>{{it.createTime}}</td>
+                <td>
+                    <button index="{{$index}}" class="btn btn-xs btn-primary">详情</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <ul class="pagination" style="margin: 0px 0px 14px 14px;"></ul>
+        </div>
+    </div>
+</div>
